@@ -139,6 +139,7 @@ import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
+import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.ui.RecipientsEditor.RecipientContextMenuInfo;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.util.SmileyParser;
@@ -1395,7 +1396,7 @@ public class ComposeMessageActivity extends Activity
     }
 
     /**
-     * Copies media from an Mms to the "download" directory on the SD card
+     * Copies media from an Mms to a directory on the SD card
      * @param msgId
      */
     private boolean copyMedia(long msgId) {
@@ -1446,8 +1447,10 @@ public class ComposeMessageActivity extends Activity
                 }
                 // Depending on the location, there may be an
                 // extension already on the name or not
+                // Get Shared Preferences and User Defined Save Location for MMS
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 String dir = Environment.getExternalStorageDirectory() + "/"
-                                + Environment.DIRECTORY_DOWNLOADS  + "/";
+                                + prefs.getString(MessagingPreferenceActivity.MMS_SAVE_LOCATION, "download")  + "/";
                 String extension;
                 int index;
                 if ((index = fileName.indexOf(".")) == -1) {
