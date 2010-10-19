@@ -32,6 +32,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -168,6 +170,24 @@ import com.android.mms.util.SmileyParser;
 public class ComposeMessageActivity extends Activity
         implements View.OnClickListener, TextView.OnEditorActionListener,
         MessageStatusListener, Contact.UpdateListener, OnGesturePerformedListener {
+
+    // Phone Goggles block created for compatibility and demonstration to
+    // to external developers
+    private static Method phoneGoggles;
+    static {
+        try {
+            Class phoneGogglesClass = Class.forName("android.util.PhoneGoggles");
+            phoneGoggles = phoneGogglesClass.getMethod("processCommunication",
+                    new Class[] {Context.class, int.class, String[].class,
+                    Runnable.class, Runnable.class, int.class, int.class,
+                    int.class, int.class, int.class, int.class});
+
+        } catch (ClassNotFoundException e) {
+        } catch (SecurityException e) {
+        } catch (NoSuchMethodException e) {
+        }
+    }
+
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 10;
     public static final int REQUEST_CODE_TAKE_PICTURE     = 11;
     public static final int REQUEST_CODE_ATTACH_VIDEO     = 12;
@@ -3253,19 +3273,54 @@ public class ComposeMessageActivity extends Activity
                 }
             }
 
-            // send can change the recipients. Make sure we remove the listeners first and then add
-            // them back once the recipient list has settled.
-            removeRecipientsListeners();
+            final Runnable onRun = new Runnable() {
+                public void run() {
+                    // send can change the recipients. Make sure we remove the listeners first and then add
+                    // them back once the recipient list has settled.
+                    removeRecipientsListeners();
 
-            mWorkingMessage.send(mDebugRecipients);
+                    mWorkingMessage.send(mDebugRecipients);
 
-            mSentMessage = true;
-            mSendingMessage = true;
-            addRecipientsListeners();
-        }
-        // But bail out if we are supposed to exit after the message is sent.
-        if (mExitOnSent) {
-            finish();
+                    mSentMessage = true;
+                    mSendingMessage = true;
+                    addRecipientsListeners();
+                    // But bail out if we are supposed to exit after the message is sent.
+                    if (mExitOnSent) {
+                        finish();
+                    }
+                }
+            };
+            final Runnable onCancel = new Runnable() {
+                public void run() {
+                    finish();
+                }
+            };
+
+            if (phoneGoggles != null) {
+                try {
+                    phoneGoggles.invoke(null, this,
+                            1, // 1 for phone numbers, 2 for email addresses, 0 otherwise
+                            mConversation.getRecipients().getNumbers(),
+                            onRun, onCancel,
+                            R.string.dialog_phone_goggles_title,
+                            R.string.dialog_phone_goggles_title_unlocked,
+                            R.string.dialog_phone_goggles_content,
+                            R.string.dialog_phone_goggles_unauthorized,
+                            R.string.dialog_phone_goggles_ok,
+                            R.string.dialog_phone_goggles_cancel);
+
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+
+            // If the Phone Goggles API doesn't exist
+            } else {
+                onRun.run();
+            }
         }
     }
 

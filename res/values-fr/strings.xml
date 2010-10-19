@@ -387,4 +387,13 @@
     <!-- Send on enter -->
     <string name="pref_title_mms_send_on_enter">Envoyer avec entrée</string>
     <string name="pref_summary_mms_send_on_enter">Envoyer le message lorsque la touche entrée est appuyée</string>
+
+    <!-- Phone goggles -->
+    <string name="toast_phone_goggles">Vous n\'êtes pas autorisé a envoyer des SMS pour le moment. Veuillez réitérer votre demande plus tard.</string>
+    <string name="dialog_phone_goggles_title">Appel bloqué</string>
+    <string name="dialog_phone_goggles_title_unlocked">Appel autorisé</string>
+    <string name="dialog_phone_goggles_content">Envoyer un SMS n\'est pas recommandé pour le moment. Etes vous sûr de vouloir continuer ?</string>
+    <string name="dialog_phone_goggles_unauthorized">Envoyer un SMS n\'est pas recommandé pour le moment.</string>
+    <string name="dialog_phone_goggles_ok">Envoyer</string>
+    <string name="dialog_phone_goggles_cancel">Enregistrer</string>
 </resources>

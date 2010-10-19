@@ -843,5 +843,14 @@
     <string name="template_select">Select a template</string>
     <string name="template_cancel_confirm_title">Warning</string>
     <string name="template_cancel_confirm_text">Would you like to cancel?</string>
+
+    <!-- Phone goggles -->
+    <string name="toast_phone_goggles">You are not allowed to send SMS at this time. Please try again later.</string>
+    <string name="dialog_phone_goggles_title">SMS blocked</string>
+    <string name="dialog_phone_goggles_title_unlocked">SMS authorized</string>
+    <string name="dialog_phone_goggles_content">Sending a SMS may not be wise at this time. Are you sure you want to continue?</string>
+    <string name="dialog_phone_goggles_unauthorized">Sending a SMS may not be wise at this time.</string>
+    <string name="dialog_phone_goggles_ok">Send</string>
+    <string name="dialog_phone_goggles_cancel">Save draft</string>
 </resources>
 
