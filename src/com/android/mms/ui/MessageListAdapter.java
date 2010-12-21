@@ -544,7 +544,24 @@ public class MessageListAdapter extends CursorAdapter {
 
                 try {
                     byte[] photoData = c.getBlob(0);
-                    Bitmap b = BitmapFactory.decodeByteArray(photoData, 0, photoData.length, null);
+                    /* large pic fix
+                     * facebook syncing brings over some really huge pictures that cause mms to
+                     * crash out. We'll just scale pictures larger than 96x96
+                     */
+                    BitmapFactory.Options opt = new BitmapFactory.Options();
+                    opt.inJustDecodeBounds = true;
+                    BitmapFactory.decodeByteArray(photoData, 0, photoData.length, opt);
+                    if (opt.outHeight * opt.outWidth * 2 > 96*96*2) {
+                        Boolean scaleByHeight = Math.abs(opt.outHeight - 96) >= Math.abs(opt.outWidth - 96);
+                        double sampleSize = scaleByHeight
+                        ? opt.outHeight / 96
+                        : opt.outWidth / 96;
+                        opt.inSampleSize =
+                            (int)Math.pow(2d, Math.floor(
+                            Math.log(sampleSize)/Math.log(2d)));
+                    }
+                    opt.inJustDecodeBounds = false;
+                    Bitmap b = BitmapFactory.decodeByteArray(photoData, 0, photoData.length, opt);
                     mPhoto = new BitmapDrawable(mContext.getResources(), b);
                     return true;
                 } catch (Exception ex) {
