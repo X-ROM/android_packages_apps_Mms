@@ -50,6 +50,8 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.PhoneLookup;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
 import android.text.Spannable;
@@ -85,6 +87,9 @@ public class MessagingNotification {
     private static final String[] SMS_STATUS_PROJECTION = new String[] {
         Sms.THREAD_ID, Sms.DATE, Sms.ADDRESS, Sms.SUBJECT, Sms.BODY };
 
+    private static final String[] LOOKUP_PROJECTION = new String[] {
+        PhoneLookup.DISPLAY_NAME, PhoneLookup.TYPE, PhoneLookup.LABEL };
+
     // These must be consistent with MMS_STATUS_PROJECTION and
     // SMS_STATUS_PROJECTION.
     private static final int COLUMN_THREAD_ID   = 0;
@@ -94,6 +99,11 @@ public class MessagingNotification {
     private static final int COLUMN_SUBJECT     = 3;
     private static final int COLUMN_SUBJECT_CS  = 4;
     private static final int COLUMN_SMS_BODY    = 4;
+
+    // These must be consistent with LOOKUP_PROJECTION
+    private static final int COLUMN_DISPLAY_NAME = 0;
+    private static final int COLUMN_TYPE         = 1;
+    private static final int COLUMN_LABEL        = 2;
 
     private static final String NEW_INCOMING_SM_CONSTRAINT =
             "(" + Sms.TYPE + " = " + Sms.MESSAGE_TYPE_INBOX
@@ -192,10 +202,11 @@ public class MessagingNotification {
 
         // And deals with delivery reports (which use Toasts). It's safe to call in a worker
         // thread because the toast will eventually get posted to a handler.
-        delivery = getSmsNewDeliveryInfo(context);
-        if (delivery != null) {
-            delivery.deliver(context, isStatusMessage);
-        }
+        // Oh no it doesn't since this design is so bad
+        //delivery = getSmsNewDeliveryInfo(context);
+        //if (delivery != null) {
+        //    delivery.deliver(context, isStatusMessage);
+        //}
     }
 
     /**
@@ -206,6 +217,53 @@ public class MessagingNotification {
         nonBlockingUpdateNewMessageIndicator(context, false, false);
         updateSendFailedNotification(context);
         updateDownloadFailedNotification(context);
+    }
+
+    /**
+     * Display delivery notification. One for each call, not just for
+     * most recent one.
+     * Does its work and query in a worker thread.
+     */
+    public static void nonBlockingShowDelivery(final Context context,
+            final String address) {
+        if (address == null) {
+            return;
+        }
+        new Thread(new Runnable() {
+            public void run() {
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+                if (!sp.getBoolean(MessagingPreferenceActivity.NOTIFICATION_ENABLED, true)) {
+                    return;
+                }
+                Uri uri = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI,
+                        Uri.encode(address));
+                Cursor cursor = context.getContentResolver().query(uri,
+                        LOOKUP_PROJECTION, null, null, null);
+                String recipient;
+                try {
+                    if (cursor != null && cursor.moveToFirst()) {
+                        recipient = cursor.getString(COLUMN_DISPLAY_NAME) + " (" +
+                                Phone.getTypeLabel(context.getResources(), cursor.getInt(COLUMN_TYPE),
+                                cursor.getString(COLUMN_LABEL)) + ")";
+                    }
+                    else {
+                        recipient = address;
+                    }
+                } finally {
+                    if (cursor != null) {
+                        cursor.close();
+                    }
+                }
+
+                final String message = String.format(context.getString(R.string.delivery_toast_body),
+                        recipient);
+                mToastHandler.post(new Runnable() {
+                    public void run() {
+                        Toast.makeText(context, message, 3000).show();
+                    }
+                });
+            }
+        }).start();
     }
 
     private static final int accumulateNotificationInfo(
@@ -372,7 +430,7 @@ public class MessagingNotification {
             long threadId = cursor.getLong(COLUMN_THREAD_ID);
             long timeMillis = cursor.getLong(COLUMN_DATE);
 
-            if (Log.isLoggable(LogTag.APP, Log.VERBOSE)) 
+            if (Log.isLoggable(LogTag.APP, Log.VERBOSE))
             {
                 Log.d(TAG, "getSmsNewMessageNotificationInfo: count=" + cursor.getCount() +
                         ", first addr=" + address + ", thread_id=" + threadId);
