@@ -59,6 +59,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
     public static final String BLACK_BACKGROUND         = "pref_key_mms_black_background";
+    public static final String BACK_TO_ALL_THREADS      = "pref_key_mms_back_to_all_threads";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
