@@ -780,5 +780,9 @@
     <string name="pref_title_mms_user_agent">Custom User-Agent</string>
     <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
     <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
+
+    <!-- Full timestamps -->
+    <string name="pref_title_mms_full_timestamp">Full timestamps</string>
+    <string name="pref_summary_mms_full_timestamp">Enable to show both date and time in message timestamps</string>
 </resources>
 

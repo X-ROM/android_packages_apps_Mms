@@ -132,6 +132,7 @@ public class MessageListAdapter extends CursorAdapter {
     private Pattern mHighlight;
     private Context mContext;
     private boolean mBlackBackground;
+    private boolean mFullTimestamp;
 
     private HashMap<String, HashSet<MessageListItem>> mAddressToMessageListItems
         = new HashMap<String, HashSet<MessageListItem>>();
@@ -161,6 +162,7 @@ public class MessageListAdapter extends CursorAdapter {
         }
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         mBlackBackground = prefs.getBoolean(MessagingPreferenceActivity.BLACK_BACKGROUND, false);
+        mFullTimestamp = prefs.getBoolean(MessagingPreferenceActivity.FULL_TIMESTAMP, false);
 
         mAvatarCache = new AvatarCache();
     }
@@ -268,7 +270,7 @@ public class MessageListAdapter extends CursorAdapter {
         MessageItem item = mMessageItemCache.get(getKey(type, msgId));
         if (item == null && c != null && isCursorValid(c)) {
             try {
-                item = new MessageItem(mContext, type, c, mColumnsMap, mHighlight);
+                item = new MessageItem(mContext, type, c, mColumnsMap, mHighlight, mFullTimestamp);
                 mMessageItemCache.put(getKey(item.mType, item.mMsgId), item);
             } catch (MmsException e) {
                 Log.e(TAG, "getCachedMessageItem: ", e);
