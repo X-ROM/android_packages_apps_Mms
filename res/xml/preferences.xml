@@ -113,5 +113,9 @@
                         android:title="@string/pref_title_mms_full_timestamp"
                         android:summary="@string/pref_summary_mms_full_timestamp"
                         android:defaultValue="false" />
+    <CheckBoxPreference android:key="pref_key_mms_only_mobile_numbers"
+                        android:title="@string/pref_title_only_mobile_numbers"
+                        android:summary="@string/pref_summary_only_mobile_numbers"
+                        android:defaultValue="false" />
   </PreferenceCategory>
 </PreferenceScreen>

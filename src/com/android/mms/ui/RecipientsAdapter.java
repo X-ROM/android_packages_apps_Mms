@@ -23,9 +23,11 @@ import com.android.mms.data.Contact;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.MergeCursor;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.telephony.PhoneNumberUtils;
@@ -49,6 +51,8 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
     public static final int NUMBER_INDEX     = 3;
     public static final int LABEL_INDEX      = 4;
     public static final int NAME_INDEX       = 5;
+
+    private boolean mOnlyMobile;
 
     private static final String[] PROJECTION_PHONE = {
         Phone._ID,                  // 0
@@ -74,6 +78,8 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
         super(context, R.layout.recipient_filter_item, null, false /* no auto-requery */);
         mContext = context;
         mContentResolver = context.getContentResolver();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        mOnlyMobile = prefs.getBoolean(MessagingPreferenceActivity.ONLY_MOBILE_NUMBERS, false);
     }
 
     @Override
@@ -180,10 +186,20 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
                 Phone.TYPE,
                 Phone.TYPE_MMS);
          */
+        String selection = null;
+        if (mOnlyMobile) {
+            selection = String.format("%s=%s OR %s=%s OR %s=%s",
+                Phone.TYPE,
+                Phone.TYPE_MOBILE,
+                Phone.TYPE,
+                Phone.TYPE_WORK_MOBILE,
+                Phone.TYPE,
+                Phone.TYPE_MMS);
+        }
         Cursor phoneCursor =
             mContentResolver.query(uri,
                     PROJECTION_PHONE,
-                    null, //selection,
+                    selection,
                     null,
                     SORT_ORDER);
 
