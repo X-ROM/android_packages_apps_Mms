@@ -785,6 +785,10 @@
     <string name="pref_title_mms_full_timestamp">Full timestamps</string>
     <string name="pref_summary_mms_full_timestamp">Enable to show both date and time in message timestamps</string>
 
+    <!-- Which timestamps -->
+    <string name="pref_title_mms_use_sent_timestamp">Use original timestamps</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Display and store sent date instead of reception date</string>
+
     <!-- Only mobile numbers -->
     <string name="pref_title_only_mobile_numbers">Only mobile numbers</string>
     <string name="pref_summary_only_mobile_numbers">Enable to only show mobile numbers in recipient field</string>
