@@ -36,6 +36,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Browser;
+import android.preference.PreferenceManager;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.MmsSms;
 import android.provider.Telephony.Sms;
@@ -115,6 +116,7 @@ public class MessageListItem extends LinearLayout implements
 
         mMsgListItem = findViewById(R.id.msg_list_item);
         mBodyTextView = (TextView) findViewById(R.id.text_view);
+        mBodyTextView.setTextSize(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getContext()).getString(MessagingPreferenceActivity.MESSAGE_FONT_SIZE, "18")));
         mLockedIndicator = (ImageView) findViewById(R.id.locked_indicator);
         mDeliveredIndicator = (ImageView) findViewById(R.id.delivered_indicator);
         mDetailsIndicator = (ImageView) findViewById(R.id.details_indicator);
