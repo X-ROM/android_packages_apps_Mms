@@ -335,4 +335,38 @@
     <string name="sending_message" msgid="222836893217450538">"Invio in corso..."</string>
     <string name="error_state" msgid="5177386717626893507">"Stato non coerente"</string>
     <string name="error_state_text" msgid="5006221625000536698">"Lo stato di thread e destinatari non è coerente. Crea un rapporto bug e invialo all\'indirizzo android-sms-bugs@google.com."</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Impostazioni extra</string>
+
+    <!-- Back to all threads -->
+    <string name="pref_title_mms_back_to_all_threads">Torna alla lista thread</string>
+    <string name="pref_summary_mms_back_to_all_threads">Torna sempre alla lista conversazioni alla pressione del tasto BACK</string>
+
+    <!-- Toggle setting for enable/disable Black Background -->
+    <string name="pref_title_mms_black_background">Sfondo nero</string>
+    <string name="pref_summary_mms_black_background">Attiva/disattiva sfondo nero\n(Riavvio app richiesto)</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_custom_option">Custom..</string>
+    <string name="pref_title_mms_user_agent">Scegli User-Agent</string>
+    <string name="pref_summary_mms_user_agent">Fingi che il telefono sia un modello differente (utile per gli MMS)</string>
+    <string name="pref_mms_user_agent_custom_set">User-agent impostato:\n</string>
+
+    <!-- Full timestamps -->
+    <string name="pref_title_mms_full_timestamp">Timestamp completi</string>
+    <string name="pref_summary_mms_full_timestamp">Attiva per mostrare sia la data che l\'ora nel timestamp dei messagi</string>
+
+    <!-- Which timestamps -->
+    <string name="pref_title_mms_use_sent_timestamp">Usa timestamp originali</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Visualizza e archivia la data di invio invece della data di ricezione</string>
+
+    <!-- Only mobile numbers -->
+    <string name="pref_title_only_mobile_numbers">Solo numeri mobili</string>
+    <string name="pref_summary_only_mobile_numbers">Attiva per poter visualizzare solo numeri di rete mobile nel campo del destinatario</string>
+
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">Dimensione caratteri</string>
+    <string name="pref_summary_mms_message_font_size">Cambia la dimensione dei caratteri dei messaggi</string>
+    <string name="pref_dialogtitle_mms_message_font_size">Seleziona dimensione</string>
 </resources>
