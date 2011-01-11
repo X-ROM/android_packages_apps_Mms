@@ -335,4 +335,31 @@
     <string name="sending_message" msgid="222836893217450538">"送信中..."</string>
     <string name="error_state" msgid="5177386717626893507">"データの不整合"</string>
     <string name="error_state_text" msgid="5006221625000536698">"スレッドや宛先のデータに不整合があります。バグレポートをキャプチャして android-sms-bugs@google.com に送信してください。"</string>
+
+    <!-- CyanogenMod -->
+    <string name="pref_key_mms_user_agent_default">Android-Mms/2.0</string>
+    <string name="pref_title_mms_use_sent_timestamp">オリジナルの送信時刻を使用</string>
+    <string name="pref_summary_mms_use_sent_timestamp">受信日時ではなく、送信日時を保存及び表示する</string>
+    <string name="pref_extra_settings">拡張設定</string>
+
+    <string name="pref_title_mms_back_to_all_threads">スレッド一覧に戻る</string>
+    <string name="pref_summary_mms_back_to_all_threads">戻るボタンを押したときは常にすべてのスレッド一覧へ戻る</string>
+
+    <string name="pref_mms_custom_option">カスタム..</string>
+    <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
+    <string name="pref_summary_mms_user_agent">MMSクライアントのUser-Agent文字列を変更する</string>
+    <string name="pref_mms_user_agent_custom_set">設定されているUser-Agent:\n</string>
+    <string name="pref_title_only_mobile_numbers">携帯番号のみ</string>
+    <string name="pref_summary_only_mobile_numbers">宛先フィールドには携帯電話の番号のみ表示する</string>
+
+    <string name="pref_title_mms_black_background">黒い背景</string>
+    <string name="pref_summary_mms_black_background">黒い背景を使用するかどうか切り替える(要Mms再起動)</string>
+
+    <string name="pref_title_mms_full_timestamp">送信日時を省略しない</string>
+    <string name="pref_summary_mms_full_timestamp">送信日時を日付と時刻を含む完全な書式で表示する</string>
+
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">メッセージフォントサイズ</string>
+    <string name="pref_summary_mms_message_font_size">メッセージビューのフォントサイズを変更する</string>
+    <string name="pref_dialogtitle_mms_message_font_size">フォントサイズを選択</string>
 </resources>
