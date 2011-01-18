@@ -796,6 +796,10 @@
     <string name="pref_title_only_mobile_numbers">Only mobile numbers</string>
     <string name="pref_summary_only_mobile_numbers">Enable to only show mobile numbers in recipient field</string>
 
+    <!-- Email address completion -->
+    <string name="pref_title_mms_email_addr_completion">Email address completion</string>
+    <string name="pref_summary_mms_email_addr_completion">Enable/disable email address auto-completion into recipient field</string>
+
     <!-- Message Font size -->
     <string name="pref_title_mms_message_font_size">Message font size</string>
     <string name="pref_summary_mms_message_font_size">Change font size of message view</string>

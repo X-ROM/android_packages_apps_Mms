@@ -134,5 +134,9 @@
                         android:entries="@array/pref_mms_message_font_size_entries"
                         android:entryValues="@array/pref_mms_message_font_size_values"
                         android:dialogTitle="@string/pref_dialogtitle_mms_message_font_size" />
+    <CheckBoxPreference android:key="pref_key_mms_email_addr_completion"
+                        android:title="@string/pref_title_mms_email_addr_completion"
+                        android:summary="@string/pref_summary_mms_email_addr_completion"
+                        android:defaultValue="false" />
   </PreferenceCategory>
 </PreferenceScreen>

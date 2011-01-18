@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.telephony.PhoneNumberUtils;
 import android.text.Annotation;
 import android.text.Spannable;
@@ -53,6 +54,7 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
     public static final int NAME_INDEX       = 5;
 
     private boolean mOnlyMobile;
+    private boolean mEmailAddrCompletion;
 
     private static final String[] PROJECTION_PHONE = {
         Phone._ID,                  // 0
@@ -63,8 +65,19 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
         Phone.DISPLAY_NAME,         // 5
     };
 
+    private static final String[] PROJECTION_EMAIL = {
+        Email._ID,                  // 0
+        Email.CONTACT_ID,           // 1
+        Email.TYPE,                 // 2
+        Email.DATA,                 // 3
+        Email.LABEL,                // 4
+        Phone.DISPLAY_NAME,         // 5
+    };
+
     private static final String SORT_ORDER = Contacts.TIMES_CONTACTED + " DESC,"
             + Contacts.DISPLAY_NAME + "," + Phone.TYPE;
+    private static final String SORT_ORDER_EMAIL = Contacts.TIMES_CONTACTED + " DESC,"
+            + Contacts.DISPLAY_NAME + "," + Email.TYPE;
 
     private final Context mContext;
     private final ContentResolver mContentResolver;
@@ -80,6 +93,7 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
         mContentResolver = context.getContentResolver();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
         mOnlyMobile = prefs.getBoolean(MessagingPreferenceActivity.ONLY_MOBILE_NUMBERS, false);
+	mEmailAddrCompletion = prefs.getBoolean(MessagingPreferenceActivity.EMAIL_ADDR_COMPLETION, false);
     }
 
     @Override
@@ -202,6 +216,16 @@ public class RecipientsAdapter extends ResourceCursorAdapter {
                     selection,
                     null,
                     SORT_ORDER);
+        if (mEmailAddrCompletion) {
+            uri = Uri.withAppendedPath(Email.CONTENT_FILTER_URI, Uri.encode(cons));
+            Cursor addrCursor =
+                mContentResolver.query(uri,
+                        PROJECTION_EMAIL,
+                        null,
+                        null,
+                        SORT_ORDER_EMAIL);
+            phoneCursor = new MergeCursor(new Cursor[] { phoneCursor, addrCursor });
+        }
 
         if (phone.length() > 0) {
             ArrayList result = new ArrayList();
