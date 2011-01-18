@@ -192,6 +192,10 @@
     <string name="pref_summary_mms_auto_retrieval" msgid="925163257363757048">"Recupera messaggi automaticamente"</string>
     <string name="pref_title_mms_retrieval_during_roaming" msgid="6016227402731817804">"Recupero in roaming"</string>
     <string name="pref_summary_mms_retrieval_during_roaming" msgid="2427892806582531020">"Recupera automaticamente i messaggi durante il roaming"</string>
+
+    <!-- Setting item for folder to save MMS Attachments to -->
+    <string name="pref_title_save_location">Cartella allegati</string>
+
     <string name="to_label" msgid="2355268818058389047">"A "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Elimina"</string>
     <string name="confirm_dialog_locked_title" msgid="8179085718150932242">"Eliminare messaggio bloccato?"</string>
@@ -364,6 +368,10 @@
     <!-- Only mobile numbers -->
     <string name="pref_title_only_mobile_numbers">Solo numeri mobili</string>
     <string name="pref_summary_only_mobile_numbers">Attiva per poter visualizzare solo numeri di rete mobile nel campo del destinatario</string>
+
+    <!-- Email address completion -->
+    <string name="pref_title_mms_email_addr_completion">Completamento ind. Email</string>
+    <string name="pref_summary_mms_email_addr_completion">Attiva/disattiva completamento automatico indirizzo email nel campo del destinatario</string>
 
     <!-- Message Font size -->
     <string name="pref_title_mms_message_font_size">Dimensione caratteri</string>
