@@ -362,4 +362,5 @@
     <string name="pref_title_mms_message_font_size">メッセージフォントサイズ</string>
     <string name="pref_summary_mms_message_font_size">メッセージビューのフォントサイズを変更する</string>
     <string name="pref_dialogtitle_mms_message_font_size">フォントサイズを選択</string>
+    <string name="pref_title_save_location">添付ファイルの保存先</string>
 </resources>
