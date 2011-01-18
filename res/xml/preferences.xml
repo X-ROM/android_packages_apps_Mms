@@ -82,13 +82,19 @@
                         android:title="@string/pref_title_notification_enabled"
                         android:summary="@string/pref_summary_notification_enabled"
                         android:defaultValue="true" />
-    <RingtonePreference android:layout="?android:attr/preferenceLayoutChild"
-                        android:dependency="pref_key_enable_notifications"
-                        android:key="pref_key_ringtone"
-                        android:title="@string/pref_title_notification_ringtone"
-                        android:ringtoneType="notification"
-                        android:defaultValue="content://settings/system/notification_sound" />
-    <ListPreference     android:layout="?android:attr/preferenceLayoutChild"
+    <PreferenceScreen android:key="pref_key_mms_notification_settings"
+                      android:dependency="pref_key_enable_notifications"
+                      android:title="@string/pref_notification_settings_title">
+        <PreferenceCategory android:title="@string/pref_notification_settings_title">
+          <RingtonePreference android:layout="?android:attr/preferenceLayoutChild"
+                              android:dependency="pref_key_enable_notifications"
+                              android:key="pref_key_ringtone"
+                              android:title="@string/pref_title_notification_ringtone"
+                              android:ringtoneType="notification"
+                              android:defaultValue="content://settings/system/notification_sound" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/pref_title_mms_notification_vibrate_settings">
+          <ListPreference     android:layout="?android:attr/preferenceLayoutChild"
                         android:dependency="pref_key_enable_notifications"
                         android:key="pref_key_vibrateWhen"
                         android:defaultValue="@string/prefDefault_vibrateWhen"
@@ -97,6 +103,22 @@
                         android:entries="@array/prefEntries_vibrateWhen"
                         android:entryValues="@array/prefValues_vibrateWhen"
                         android:dialogTitle="@string/prefDialogTitle_vibrateWhen" />
+          <com.android.mms.preferences.CustomVibrateListPreference
+                          android:key="pref_key_mms_notification_vibrate_pattern"
+                          android:dependency="pref_key_vibrateWhen"
+                          android:defaultValue=""
+                          android:title="@string/pref_title_mms_notification_vibrate_pattern"
+                          android:summary="@string/pref_summary_mms_notification_vibrate_pattern"
+                          android:entries="@array/pref_mms_notification_vibrate_pattern_entries"
+                          android:entryValues="@array/pref_mms_notification_vibrate_pattern_values"
+                          android:dialogTitle="@string/pref_title_mms_notification_vibrate_pattern" />
+          <CheckBoxPreference android:key="pref_key_mms_notification_vibrate_call"
+                          android:dependency="pref_key_enable_notifications"
+                          android:defaultValue="true"
+                          android:title="@string/pref_title_mms_notification_vibrate_call"
+                          android:summary="@string/pref_summary_mms_notification_vibrate_call" />
+        </PreferenceCategory>
+    </PreferenceScreen>
   </PreferenceCategory>
   <PreferenceCategory android:title="@string/pref_extra_settings">
     <com.android.mms.preferences.UserAgentListPreference
