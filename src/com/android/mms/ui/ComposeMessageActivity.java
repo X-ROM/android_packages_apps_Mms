@@ -225,6 +225,7 @@ public class ComposeMessageActivity extends Activity
     private Conversation mConversation;     // Conversation we are working in
 
     private boolean mExitOnSent;            // Should we finish() after sending a message?
+    private boolean mSendOnEnter;           // Send on Enter
 
     private boolean mBlackBackground;       // Option for switch background from white to black
     private boolean mBackToAllThreads;      // Always return to all threads list
@@ -1682,6 +1683,7 @@ public class ComposeMessageActivity extends Activity
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences((Context)ComposeMessageActivity.this);
         mBlackBackground = prefs.getBoolean(MessagingPreferenceActivity.BLACK_BACKGROUND, false);
         mBackToAllThreads = prefs.getBoolean(MessagingPreferenceActivity.BACK_TO_ALL_THREADS, false);
+        mSendOnEnter = prefs.getBoolean(MessagingPreferenceActivity.SEND_ON_ENTER, true);
         if(!mBlackBackground) {
             setContentView(R.layout.compose_message_activity);
         } else {
@@ -2874,6 +2876,10 @@ public class ComposeMessageActivity extends Activity
 
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (event != null) {
+            // Send on Enter
+            if (((event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) || (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) && !mSendOnEnter) {
+                return false;
+            }
             // if shift key is down, then we want to insert the '\n' char in the TextView;
             // otherwise, the default action is to send the message.
             if (!event.isShiftPressed()) {
