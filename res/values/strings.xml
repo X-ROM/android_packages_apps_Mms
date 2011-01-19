@@ -805,7 +805,6 @@
     <string name="pref_summary_mms_message_font_size">Change font size of message view</string>
     <string name="pref_dialogtitle_mms_message_font_size">Select font size</string>
 
-<<<<<<< HEAD
     <!-- Change Vibrate pattern/method for message notification -->
     <string name="pref_title_mms_notification_vibrate_settings">Vibrate settings</string>
     <string name="pref_title_mms_notification_vibrate_pattern">Vibrate pattern</string>
