@@ -365,6 +365,15 @@
     <string name="pref_dialogtitle_mms_message_font_size">フォントサイズを選択</string>
     <string name="pref_title_save_location">添付ファイルの保存先</string>
 
+    <!-- Change Vibrate pattern/method for message notification -->
+    <string name="pref_title_mms_notification_vibrate_settings">振動</string>
+    <string name="pref_title_mms_notification_vibrate_pattern">パターン</string>
+    <string name="pref_summary_mms_notification_vibrate_pattern">パターン変更</string>
+    <string name="pref_title_mms_notification_vibrate_call">通話時に振動</string>
+    <string name="pref_summary_mms_notification_vibrate_call">通話中に振動を許可する</string>
+    <string name="pref_title_mms_notification_vibrate_custom">カスタムパターン</string>
+    <string name="pref_text_mms_notification_vibrate_custom">書式はオフ/オンのミリ秒: オフ, オン, オフ, オン, ...</string>
+
     <!-- Send on Enter -->
     <string name="pref_title_mms_send_on_enter">Enterキーで送信</string>
     <string name="pref_summary_mms_send_on_enter">Enterキーの押下でメッセージを送信するかどうか切り替える</string>
