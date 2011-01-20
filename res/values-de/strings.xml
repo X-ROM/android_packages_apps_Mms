@@ -192,6 +192,10 @@
     <string name="pref_summary_mms_auto_retrieval" msgid="925163257363757048">"Nachrichten automatisch empfangen"</string>
     <string name="pref_title_mms_retrieval_during_roaming" msgid="6016227402731817804">"Autom. Roaming-Abruf"</string>
     <string name="pref_summary_mms_retrieval_during_roaming" msgid="2427892806582531020">"Bei Roaming Nachrichten automatisch abrufen"</string>
+
+    <!-- Setting item for folder to save MMS Attachments to -->
+    <string name="pref_title_save_location">Speicherort für Anhänge</string>
+
     <string name="to_label" msgid="2355268818058389047">"An "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Löschen"</string>
     <string name="confirm_dialog_locked_title" msgid="8179085718150932242">"Gesperrte Nachricht entfernen?"</string>
@@ -335,4 +339,53 @@
     <string name="sending_message" msgid="222836893217450538">"Wird gesendet…"</string>
     <string name="error_state" msgid="5177386717626893507">"Uneinheitlicher Status"</string>
     <string name="error_state_text" msgid="5006221625000536698">"Der Status von Threads und Empfängern ist uneinheitlich. Bitte erstellen Sie einen Fehlerbericht und senden Sie ihn an android-sms-bugs@google.com."</string>
+
+    <!-- Extra Settings: -->
+    <string name="pref_extra_settings">Extra-Einstellungen</string>
+
+    <string name="pref_title_mms_back_to_all_threads">Zurück zu allen Nachrichten</string>
+    <string name="pref_summary_mms_back_to_all_threads">Mit ZURÜCK-Taste immer zur Nachrichtenübersicht zurückkehren</string>
+
+    <!-- Toggle setting for enable/disable Black Background -->
+    <string name="pref_title_mms_black_background">Schwarzer Hintergrund</string>
+    <string name="pref_summary_mms_black_background">Ein/Ausschalten des schwarzen Hintergrunds\n(MMS Neustart)</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_custom_option">Anderer...</string>
+    <string name="pref_title_mms_user_agent">Anderer User-Agent</string>
+    <string name="pref_summary_mms_user_agent">Das Gerät für MMS als ein anderes Modell ausgeben lassen.</string>
+    <string name="pref_mms_user_agent_custom_set">eingestellter User-Agent:\n</string>
+
+    <!-- Full timestamps -->
+    <string name="pref_title_mms_full_timestamp">Volle Datumsangabe</string>
+    <string name="pref_summary_mms_full_timestamp">Datum und Zeit der Nachricht anzeigen</string>
+
+    <!-- Which timestamps -->
+    <string name="pref_title_mms_use_sent_timestamp">Originale Datumsangabe</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Sendedatum und Sendezeit der Nachricht anzeigen und speichern statt der Daten vom Empfangszeitpunkt</string>
+
+    <!-- Only mobile numbers -->
+    <string name="pref_title_only_mobile_numbers">Nur mobile Rufnummern</string>
+    <string name="pref_summary_only_mobile_numbers">Im Empfängerfeld nur Nummern von Mobiltelefonen vorschlagen</string>
+
+    <!-- Email address completion -->
+    <string name="pref_title_mms_email_addr_completion">Email-Vervollständigung</string>
+    <string name="pref_summary_mms_email_addr_completion">Ein/Ausschalten der Auto-Vervollständigung für Email-Adressen im Empfängerfeld</string>
+
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">Schriftgröße</string>
+    <string name="pref_summary_mms_message_font_size">Die Schriftgröße in der Nachrichtenansicht ändern</string>
+    <string name="pref_dialogtitle_mms_message_font_size">Schriftgröße wählen</string>
+
+    <!-- Change Vibrate pattern/method for message notification -->
+    <string name="pref_title_mms_notification_vibrate_settings">Vibrationseinstellungen</string>
+    <string name="pref_title_mms_notification_vibrate_pattern">Vibrationsmuster</string>
+    <string name="pref_summary_mms_notification_vibrate_pattern">Vibrationsmuster ändern</string>
+    <string name="pref_title_mms_notification_vibrate_call">Vibrieren bei Anruf</string>
+    <string name="pref_summary_mms_notification_vibrate_call">Das Vibrieren während eines Anrufs erlauben</string>
+    <string name="pref_title_mms_notification_vibrate_custom">Anderes Vibrationsmuster</string>
+    <string name="pref_text_mms_notification_vibrate_custom">Format aus/an in Millisekunden: aus, an, aus, an, ...</string>
+
+    <string name="pref_title_mms_send_on_enter">Senden mit Enter</string>
+    <string name="pref_summary_mms_send_on_enter">Nachricht senden nach Drücken der ENTER-Taste</string>
 </resources>
