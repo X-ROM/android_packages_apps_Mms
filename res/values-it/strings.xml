@@ -377,4 +377,17 @@
     <string name="pref_title_mms_message_font_size">Dimensione caratteri</string>
     <string name="pref_summary_mms_message_font_size">Cambia la dimensione dei caratteri dei messaggi</string>
     <string name="pref_dialogtitle_mms_message_font_size">Seleziona dimensione</string>
+
+    <!-- Change Vibrate pattern/method for message notification -->
+    <string name="pref_title_mms_notification_vibrate_settings">Impostazioni vibrazione</string>
+    <string name="pref_title_mms_notification_vibrate_pattern">Sequenza di vibrazione</string>
+    <string name="pref_summary_mms_notification_vibrate_pattern">Modifica sequenza di vibrazione</string>
+    <string name="pref_title_mms_notification_vibrate_call">Vibra durante chiamata</string>
+    <string name="pref_summary_mms_notification_vibrate_call">Abilita vibrazione durante una chiamata</string>
+    <string name="pref_title_mms_notification_vibrate_custom">Sequenza personalizzata</string>
+    <string name="pref_text_mms_notification_vibrate_custom">Sequenza off/on in millisecondi: off, on, off, on, ...</string>
+
+    <!-- Send on enter -->
+    <string name="pref_title_mms_send_on_enter">Invio con Enter</string>
+    <string name="pref_summary_mms_send_on_enter">Attiva/disattiva invio sms alla pressione del tasto enter</string>
 </resources>

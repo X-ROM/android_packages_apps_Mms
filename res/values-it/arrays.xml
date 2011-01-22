@@ -56,4 +56,14 @@
     <item msgid="6334637439528489607">"Risata"</item>
     <item msgid="7602915122893958066">"Confuso"</item>
   </string-array>
+
+    <string-array name="pref_mms_notification_vibrate_pattern_entries">
+      <item>Normale</item>
+      <item>Vibrazione media</item>
+      <item>Vibrazione prolungata</item>
+      <item>Multiple brevi</item>
+      <item>Multiple prolungate</item>
+      <item>@string/pref_mms_custom_option</item>
+   </string-array>
+
 </resources>
