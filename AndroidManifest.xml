@@ -268,5 +268,13 @@
                     android:readPermission="android.permission.GLOBAL_SEARCH" />
         </provider>
 
+        <activity android:name=".templates.TemplatesListActivity"
+            android:label="@string/template_list_title">
+        </activity>
+
+        <activity android:name=".templates.TemplateEditor"
+            android:label="@string/template_new_title">
+        </activity>
+
     </application>
 </manifest>

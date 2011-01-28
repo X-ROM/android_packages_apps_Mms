@@ -817,5 +817,31 @@
     <string name="pref_title_mms_send_on_enter">Send on Enter</string>
     <string name="pref_summary_mms_send_on_enter">Enable/disable send message when Enter key pressed</string>
 
+    <!-- Sms templates -->
+    <string name="prefs_templates_settings">Sms templates</string>
+    <string name="pref_title_templates_manage">Templates</string>
+    <string name="pref_summary_templates_manage">Manage your sms templates</string>
+    <string name="pref_title_templates_show_gesture">Gesture</string>
+    <string name="pref_summary_templates_show_gesture">Show gesture trace</string>
+    <string name="template_save">Save</string>
+    <string name="template_insert_hint">Insert here the template text</string>
+    <string name="template_empty_text">Text field cannot be empty</string>
+    <string name="template_explanation">Insert or modify the template text and
+        optionally
+        draw a gesture to associate it</string>
+    <string name="template_edit">Edit</string>
+    <string name="template_delete">Delete</string>
+    <string name="template_ctx_menu_title">Actions</string>
+    <string name="template_list_title">Templates</string>
+    <string name="template_edit_title">Edit template</string>
+    <string name="template_new_title">New template</string>
+    <string name="template_insert">Insert template</string>
+    <string name="template_insert_ctx_menu_title">Edit text</string>
+    <string name="template_gesture_draw">Draw the gesture in the space below</string>
+    <string name="template_not_present_error">You have not defined any template</string>
+    <string name="template_not_present_error_title">Error</string>
+    <string name="template_select">Select a template</string>
+    <string name="template_cancel_confirm_title">Warning</string>
+    <string name="template_cancel_confirm_text">Would you like to cancel?</string>
 </resources>
 

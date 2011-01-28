@@ -390,4 +390,30 @@
     <!-- Send on enter -->
     <string name="pref_title_mms_send_on_enter">Invio con Enter</string>
     <string name="pref_summary_mms_send_on_enter">Attiva/disattiva invio sms alla pressione del tasto enter</string>
+
+    <!-- Sms templates -->
+    <string name="prefs_templates_settings">Modelli sms</string>
+    <string name="pref_title_templates_manage">Modelli</string>
+    <string name="pref_summary_templates_manage">Gestisci i tuoi modelli</string>
+    <string name="pref_title_templates_show_gesture">Gesture</string>
+    <string name="pref_summary_templates_show_gesture">Mostra traccia della gesture</string>
+    <string name="template_save">Salva</string>
+    <string name="template_insert_hint">Inserisci qui il testo del modello</string>
+    <string name="template_empty_text">Il testo non può essere vuoto</string>
+    <string name="template_explanation">Inserisci o modifica il testo del modello e,
+        opzionalmente, disegna una gesture a cui associarlo</string>
+    <string name="template_edit">Modifica</string>
+    <string name="template_delete">Elimina</string>
+    <string name="template_ctx_menu_title">Azioni</string>
+    <string name="template_list_title">Modelli</string>
+    <string name="template_edit_title">Modifica modello</string>
+    <string name="template_new_title">Nuovo modello</string>
+    <string name="template_insert">Inserisci modello</string>
+    <string name="template_insert_ctx_menu_title">Modifica testo</string>
+    <string name="template_gesture_draw">Disegna la gesture nello spazio sottostante</string>
+    <string name="template_not_present_error">Non hai ancora definito alcun modello</string>
+    <string name="template_not_present_error_title">Errore</string>
+    <string name="template_select">Seleziona un modello</string>
+    <string name="template_cancel_confirm_title">Warning</string>
+    <string name="template_cancel_confirm_text">Vuoi davvero cancellare questo modello?</string>
 </resources>

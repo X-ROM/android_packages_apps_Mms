@@ -40,6 +40,7 @@ import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.AsyncQueryHandler;
 import android.content.BroadcastReceiver;
@@ -60,6 +61,11 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SqliteWrapper;
 import android.drm.mobile1.DrmException;
 import android.drm.mobile1.DrmRawContent;
+import android.gesture.Gesture;
+import android.gesture.GestureLibrary;
+import android.gesture.GestureOverlayView;
+import android.gesture.GestureOverlayView.OnGesturePerformedListener;
+import android.gesture.Prediction;
 import android.graphics.drawable.Drawable;
 import android.media.CamcorderProfile;
 import android.media.RingtoneManager;
@@ -137,6 +143,8 @@ import com.google.android.mms.pdu.PduPersister;
 import com.google.android.mms.pdu.SendReq;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.templates.TemplateGesturesLibrary;
+import com.android.mms.templates.TemplatesDb;
 import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
 import com.android.mms.ui.MessagingPreferenceActivity;
@@ -159,7 +167,7 @@ import com.android.mms.util.SmileyParser;
  */
 public class ComposeMessageActivity extends Activity
         implements View.OnClickListener, TextView.OnEditorActionListener,
-        MessageStatusListener, Contact.UpdateListener {
+        MessageStatusListener, Contact.UpdateListener, OnGesturePerformedListener {
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 10;
     public static final int REQUEST_CODE_TAKE_PICTURE     = 11;
     public static final int REQUEST_CODE_ATTACH_VIDEO     = 12;
@@ -205,6 +213,7 @@ public class ComposeMessageActivity extends Activity
     private static final int MENU_LOCK_MESSAGE          = 28;
     private static final int MENU_UNLOCK_MESSAGE        = 29;
     private static final int MENU_COPY_TO_DRM_PROVIDER  = 30;
+    private static final int MENU_INSERT_TEMPLATE 		= 31;
 
     private static final int RECIPIENTS_MAX_LENGTH = 312;
 
@@ -217,6 +226,9 @@ public class ComposeMessageActivity extends Activity
     private static final long NO_DATE_FOR_DIALOG = -1L;
 
     private static final String EXIT_ECM_RESULT = "exit_ecm_result";
+
+    private static final int DIALOG_TEMPLATE_SELECT = 0;
+    private static final int DIALOG_TEMPLATE_NOT_AVAILABLE = 1;
 
     private ContentResolver mContentResolver;
 
@@ -273,6 +285,10 @@ public class ComposeMessageActivity extends Activity
     private Intent mAddContactIntent;   // Intent used to add a new contact
 
     private String mDebugRecipients;
+
+    private GestureLibrary mLibrary;
+    private TemplatesDb mTemplatesDb;
+    private String[] mTemplatesText;
 
     @SuppressWarnings("unused")
     private static void log(String logMsg) {
@@ -1684,12 +1700,25 @@ public class ComposeMessageActivity extends Activity
         mBlackBackground = prefs.getBoolean(MessagingPreferenceActivity.BLACK_BACKGROUND, false);
         mBackToAllThreads = prefs.getBoolean(MessagingPreferenceActivity.BACK_TO_ALL_THREADS, false);
         mSendOnEnter = prefs.getBoolean(MessagingPreferenceActivity.SEND_ON_ENTER, true);
-        if(!mBlackBackground) {
-            setContentView(R.layout.compose_message_activity);
-        } else {
-            setContentView(R.layout.compose_message_activity_black);
+
+        boolean showGesture = prefs.getBoolean(MessagingPreferenceActivity.SHOW_GESTURE, true);
+
+        int layout = R.layout.compose_message_activity;
+
+        if (mBlackBackground) {
+            layout = R.layout.compose_message_activity_black;
         }
+
+        GestureOverlayView gestureOverlayView = new GestureOverlayView(this);
+        View inflate = getLayoutInflater().inflate(layout, null);
+        gestureOverlayView.addView(inflate);
+        gestureOverlayView.setEventsInterceptionEnabled(true);
+        gestureOverlayView.setGestureVisible(showGesture);
+        gestureOverlayView.addOnGesturePerformedListener(this);
+        setContentView(gestureOverlayView);
         setProgressBarVisibility(false);
+
+        mLibrary = TemplateGesturesLibrary.getStore(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE |
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -1704,6 +1733,79 @@ public class ComposeMessageActivity extends Activity
 
         if (TRACE) {
             android.os.Debug.startMethodTracing("compose");
+        }
+
+        registerForContextMenu(mTextEditor);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id, Bundle args) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        switch (id) {
+            case DIALOG_TEMPLATE_NOT_AVAILABLE:
+                builder.setTitle(R.string.template_not_present_error_title);
+                builder.setMessage(R.string.template_not_present_error);
+                return builder.create();
+
+            case DIALOG_TEMPLATE_SELECT:
+                builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.template_select);
+                builder.setItems(mTemplatesText, new OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mTextEditor.append(mTemplatesText[which]);
+                    }
+                });
+                return builder.create();
+        }
+        return super.onCreateDialog(id, args);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        if (v == mTextEditor) {
+            menu.setHeaderTitle(R.string.template_insert_ctx_menu_title);
+            menu.add(Menu.NONE, MENU_INSERT_TEMPLATE, Menu.NONE, R.string.template_insert);
+        }
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getItemId() == MENU_INSERT_TEMPLATE) {
+            showInsertTemplateDialog();
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    private void showInsertTemplateDialog() {
+        if (mTemplatesDb == null) {
+            mTemplatesDb = new TemplatesDb(this);
+        }
+
+        mTemplatesDb.open();
+        mTemplatesText = mTemplatesDb.getAllTemplatesText();
+        mTemplatesDb.close();
+
+        if (mTemplatesText.length > 0) {
+            showDialog(DIALOG_TEMPLATE_SELECT);
+        } else {
+            showDialog(DIALOG_TEMPLATE_NOT_AVAILABLE);
+        }
+    }
+
+    public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
+        ArrayList<Prediction> predictions = mLibrary.recognize(gesture);
+        for (Prediction prediction : predictions) {
+            if (prediction.score > 1.0) {
+                if (mTemplatesDb == null) {
+                    mTemplatesDb = new TemplatesDb(ComposeMessageActivity.this);
+                }
+                mTemplatesDb.open();
+                String text = mTemplatesDb.getTemplateTextFromId(Long.parseLong(prediction.name));
+                mTemplatesDb.close();
+                mTextEditor.append(text);
+            }
         }
     }
 
