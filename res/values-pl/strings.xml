@@ -192,6 +192,7 @@
     <string name="pref_summary_mms_auto_retrieval" msgid="925163257363757048">"Odbierz wiadomości automatycznie"</string>
     <string name="pref_title_mms_retrieval_during_roaming" msgid="6016227402731817804">"Autoodbieranie w roamingu"</string>
     <string name="pref_summary_mms_retrieval_during_roaming" msgid="2427892806582531020">"Odbierz wiadomości automatycznie w roamingu"</string>
+    <string name="pref_title_save_location">Miejsce docelowe załączników</string>
     <string name="to_label" msgid="2355268818058389047">"Do "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Usuń"</string>
     <string name="confirm_dialog_locked_title" msgid="8179085718150932242">"Czy usunąć zablokowaną wiadomość?"</string>
@@ -387,4 +388,37 @@
     <string name="pref_title_mms_send_on_enter">Wyślij enterem</string>
     <string name="pref_summary_mms_send_on_enter">Wyślij wiadomość, gdy wciśnięty zostanie przycisk enter</string>
 
+    <!-- Sms templates -->
+    <string name="prefs_templates_settings">Szablony wiadomości</string>
+    <string name="pref_title_templates_manage">Szablony</string>
+    <string name="pref_summary_templates_manage">Zarządzaj swoimi szablonami</string>
+    <string name="pref_title_templates_show_gesture">Gest</string>
+    <string name="pref_summary_templates_show_gesture">Pokazuj ślady gestów</string>
+    <string name="template_save">Zapisz</string>
+    <string name="template_insert_hint">Wprowadź tekst szablonu</string>
+    <string name="template_empty_text">Pole tekstowe nie może być puste</string>
+    <string name="template_explanation">Wprowadź lub zmodyfikuj tekst szablonu i opcjonalnie przypisz do niego gest</string>
+    <string name="template_edit">Edytuj</string>
+    <string name="template_delete">Usuń</string>
+    <string name="template_ctx_menu_title">Akcje</string>
+    <string name="template_list_title">Szablony</string>
+    <string name="template_edit_title">Edytuj szablon</string>
+    <string name="template_new_title">Nowy szablon</string>
+    <string name="template_insert">Wstaw szablon</string>
+    <string name="template_insert_ctx_menu_title">Edytuj tekst</string>
+    <string name="template_gesture_draw">Wykonaj gest w przestrzeni poniżej</string>
+    <string name="template_not_present_error">Nie zdefiniowano żadnego szablonu</string>
+    <string name="template_not_present_error_title">Błąd</string>
+    <string name="template_select">Wybierz szablon</string>
+    <string name="template_cancel_confirm_title">Ostrzeżenie</string>
+    <string name="template_cancel_confirm_text">Czy chcesz anulować?</string>
+
+    <!-- Phone goggles -->
+    <string name="toast_phone_goggles">Nie możesz teraz wysyłać wiadomości SMS. Spróbuj ponownie później.</string>
+    <string name="dialog_phone_goggles_title">Wiadomość zablokowana</string>
+    <string name="dialog_phone_goggles_title_unlocked">Wiadomość odblokowana</string>
+    <string name="dialog_phone_goggles_content">Wysyłanie wiadomości w tej chwili może być nierozsądne. Czy napewno chcesz kontynuować?</string>
+    <string name="dialog_phone_goggles_unauthorized">Wysyłanie wiadomości w tej chwili może być nierozsądne.</string>
+    <string name="dialog_phone_goggles_ok">Wyślij</string>
+    <string name="dialog_phone_goggles_cancel">Zapisz wersję roboczą</string>
 </resources>
