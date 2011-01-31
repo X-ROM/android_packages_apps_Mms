@@ -377,4 +377,37 @@
     <string name="pref_title_mms_send_on_enter">Enterキーで送信</string>
     <string name="pref_summary_mms_send_on_enter">Enterキーの押下でメッセージを送信するかどうか切り替える</string>
 
+    <!-- Sms templates -->
+    <string name="prefs_templates_settings">メッセージテンプレート</string>
+    <string name="pref_title_templates_manage">テンプレート</string>
+    <string name="pref_summary_templates_manage">メッセージのテンプレートを管理する</string>
+    <string name="pref_title_templates_show_gesture">ジェスチャー</string>
+    <string name="pref_summary_templates_show_gesture">ジェスチャーの軌跡を表示する</string>
+    <string name="template_save">保存</string>
+    <string name="template_insert_hint">ここにテンプレートテキストを挿入する</string>
+    <string name="template_empty_text">テキストフィールドは空にできません</string>
+    <string name="template_explanation">テンプレートテキストを挿入するか変更して、オプションでジェスチャーを設定することができます。</string>
+    <string name="template_edit">編集</string>
+    <string name="template_delete">削除</string>
+    <string name="template_ctx_menu_title">アクション</string>
+    <string name="template_list_title">テンプレート</string>
+    <string name="template_edit_title">テンプレートを編集</string>
+    <string name="template_new_title">新規テンプレート</string>
+    <string name="template_insert">テンプレートを挿入</string>
+    <string name="template_insert_ctx_menu_title">テキストを編集</string>
+    <string name="template_gesture_draw">下のスペースにジェスチャーを描いてください</string>
+    <string name="template_not_present_error">まだテンプレートは作成されていません</string>
+    <string name="template_not_present_error_title">エラー</string>
+    <string name="template_select">テンプレートを選択</string>
+    <string name="template_cancel_confirm_title">警告</string>
+    <string name="template_cancel_confirm_text">キャンセルしますか?</string>
+
+    <!-- Phone goggles -->
+    <string name="toast_phone_goggles">今の時間にSMSを送信することは許可されていません。あとで再度お試しください。</string>
+    <string name="dialog_phone_goggles_title">SMSはブロックされました</string>
+    <string name="dialog_phone_goggles_title_unlocked">SMSは承認されました</string>
+    <string name="dialog_phone_goggles_content">今の時間にSMSを送信するのは恐らく賢明ではありません。それでも続けますか？</string>
+    <string name="dialog_phone_goggles_unauthorized">今の時間にSMSを送信するのは賢明ではありません。</string>
+    <string name="dialog_phone_goggles_ok">送信</string>
+    <string name="dialog_phone_goggles_cancel">下書きを保存</string>
 </resources>
