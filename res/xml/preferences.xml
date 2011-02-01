@@ -173,6 +173,6 @@
         <CheckBoxPreference android:key="pref_key_templates_show_gesture"
             android:title="@string/pref_title_templates_show_gesture"
             android:summary="@string/pref_summary_templates_show_gesture"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
     </PreferenceCategory>
 </PreferenceScreen>
