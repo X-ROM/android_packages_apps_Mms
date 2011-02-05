@@ -2,12 +2,16 @@
 package com.android.mms.templates;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.gesture.Gesture;
 import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
+import android.gesture.Prediction;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +21,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.mms.R;
+import com.android.mms.ui.MessagingPreferenceActivity;
 
 public class TemplateEditor extends Activity {
 
@@ -33,11 +38,37 @@ public class TemplateEditor extends Activity {
             if (mGesture.getLength() < LENGTH_THRESHOLD) {
                 overlay.clear(false);
             }
+
+            if (isThereASimilarGesture(mGesture)) {
+                Toast.makeText(TemplateEditor.this, R.string.gestures_already_present,
+                        Toast.LENGTH_SHORT).show();
+            }
         }
 
         public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
             mGesture = null;
         }
+    }
+
+    private double mGestureSensitivity;
+
+    public boolean isThereASimilarGesture(Gesture gesture) {
+
+        final GestureLibrary store = TemplateGesturesLibrary.getStore(this);
+        ArrayList<Prediction> predictions = store.recognize(gesture);
+
+        for (Prediction prediction : predictions) {
+            if (prediction.score > mGestureSensitivity) {
+
+                if (editingMode
+                        && prediction.name.equals(String.valueOf(mCurrentTemplateEditingId)))
+                    continue;
+                else
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     public static final String KEY_DISPLAY_TYPE = "display_type";
@@ -92,16 +123,7 @@ public class TemplateEditor extends Activity {
     private Gesture loadGestureIfExists(String name) {
         final GestureLibrary store = TemplateGesturesLibrary.getStore(this);
 
-        Log.i(LOG_TAG, "store is: " + (store == null ? "null" : "not null"));
-
-        for (String s : store.getGestureEntries()) {
-            Log.d(LOG_TAG, s);
-
-        }
-
         final ArrayList<Gesture> gestures = store.getGestures(name);
-
-        Log.i(LOG_TAG, "gesture is: " + (gestures == null ? "null" : "not null"));
 
         if (gestures != null && gestures.size() > 0) {
             return gestures.get(0);
@@ -128,6 +150,10 @@ public class TemplateEditor extends Activity {
         processActivityIntent(bundle);
 
         initViews();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        mGestureSensitivity = prefs
+                .getInt(MessagingPreferenceActivity.GESTURE_SENSITIVITY_VALUE, 3);
     }
 
     @Override

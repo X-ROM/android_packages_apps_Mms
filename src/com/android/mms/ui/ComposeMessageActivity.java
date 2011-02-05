@@ -1591,6 +1591,7 @@ public class ComposeMessageActivity extends Activity
             }
         }
     };
+    private int mGestureSensitivity;
 
     private static ContactList sEmptyContactList;
 
@@ -1720,6 +1721,7 @@ public class ComposeMessageActivity extends Activity
         mBlackBackground = prefs.getBoolean(MessagingPreferenceActivity.BLACK_BACKGROUND, false);
         mBackToAllThreads = prefs.getBoolean(MessagingPreferenceActivity.BACK_TO_ALL_THREADS, false);
         mSendOnEnter = prefs.getBoolean(MessagingPreferenceActivity.SEND_ON_ENTER, true);
+        mGestureSensitivity = prefs.getInt(MessagingPreferenceActivity.GESTURE_SENSITIVITY_VALUE, 3);
 
         boolean showGesture = prefs.getBoolean(MessagingPreferenceActivity.SHOW_GESTURE, false);
 
@@ -1817,7 +1819,7 @@ public class ComposeMessageActivity extends Activity
     public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
         ArrayList<Prediction> predictions = mLibrary.recognize(gesture);
         for (Prediction prediction : predictions) {
-            if (prediction.score > 1.0) {
+            if (prediction.score > mGestureSensitivity) {
                 if (mTemplatesDb == null) {
                     mTemplatesDb = new TemplatesDb(ComposeMessageActivity.this);
                 }

@@ -29,12 +29,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.SearchRecentSuggestions;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -76,6 +78,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
     public static final String NOTIFICATION_VIBRATE_CALL = "pref_key_mms_notification_vibrate_call";
     public static final String MANAGE_TEMPLATES = "pref_key_templates_manage";
     public static final String SHOW_GESTURE = "pref_key_templates_show_gesture";
+    public static final String GESTURE_SENSITIVITY = "pref_key_templates_gestures_sensitivity";
+    public static final String GESTURE_SENSITIVITY_VALUE = "pref_key_templates_gestures_sensitivity_value";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
@@ -88,6 +92,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
     private Preference mManageTemplate;
     private Recycler mSmsRecycler;
     private Recycler mMmsRecycler;
+    private ListPreference mGestureSensitivity;
 
     private static final int CONFIRM_CLEAR_SEARCH_HISTORY_DIALOG = 3;
 
@@ -102,6 +107,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
         mClearHistoryPref = findPreference("pref_key_mms_clear_history");
         mVibrateWhenPref = (ListPreference) findPreference(NOTIFICATION_VIBRATE_WHEN);
         mManageTemplate = findPreference(MANAGE_TEMPLATES);
+        mGestureSensitivity = (ListPreference) findPreference(GESTURE_SENSITIVITY);
 
         if (!MmsApp.getApplication().getTelephonyManager().hasIccCard()) {
             // No SIM card, remove the SIM-related prefs
@@ -121,7 +127,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
         }
 
         // If needed, migrate vibration setting from a previous version
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (!sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN) &&
                 sharedPreferences.contains(NOTIFICATION_VIBRATE)) {
             int stringId = sharedPreferences.getBoolean(NOTIFICATION_VIBRATE, false) ?
@@ -138,6 +144,21 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
                         TemplatesListActivity.class);
                 startActivity(intent);
                 return false;
+            }
+        });
+
+        String gestureSensitivity = String.valueOf(sharedPreferences.getInt(GESTURE_SENSITIVITY_VALUE, 3));
+
+        mGestureSensitivity.setSummary(gestureSensitivity);
+        mGestureSensitivity.setValue(gestureSensitivity);
+        mGestureSensitivity.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                int value = Integer.parseInt((String) newValue);
+                sharedPreferences.edit().putInt(GESTURE_SENSITIVITY_VALUE, value).commit();
+                mGestureSensitivity.setSummary(String.valueOf(value));
+                return true;
             }
         });
 

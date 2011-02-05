@@ -174,5 +174,9 @@
             android:title="@string/pref_title_templates_show_gesture"
             android:summary="@string/pref_summary_templates_show_gesture"
             android:defaultValue="false" />
+        <ListPreference android:key="pref_key_templates_gestures_sensitivity"
+            android:title="@string/pref_title_template_gestures_sensitivity"
+            android:entries="@array/pref_templates_gestures_sensitivity_entries"
+            android:entryValues="@array/pref_templates_gestures_sensitivity_values" />
     </PreferenceCategory>
 </PreferenceScreen>
