@@ -372,6 +372,7 @@
     <string name="pref_summary_templates_manage">Управляйте своими шаблонами SMS</string>
     <string name="pref_title_templates_show_gesture">Жесты</string>
     <string name="pref_summary_templates_show_gesture">Показывать путь жеста</string>
+    <string name="pref_title_template_gestures_sensitivity">Чувствительность жеста</string>
     <string name="template_save">Сохранить</string>
     <string name="template_insert_hint">Напишите здесь текст шаблона</string>
     <string name="template_empty_text">Текстовое поле не может быть пустым</string>
