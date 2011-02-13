@@ -79,15 +79,21 @@ import android.os.Message;
 import android.os.Parcelable;
 import android.os.SystemProperties;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds;
+import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
+import android.provider.ContactsContract.CommonDataKinds.Website;
+import android.provider.ContactsContract.Contacts;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.RawContactsEntity;
 import android.provider.DrmStore;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.provider.ContactsContract.Contacts;
-import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Video;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
+import android.provider.Settings;
 import android.telephony.SmsMessage;
 import android.text.ClipboardManager;
 import android.text.Editable;
@@ -194,9 +200,10 @@ public class ComposeMessageActivity extends Activity
     public static final int REQUEST_CODE_TAKE_VIDEO       = 13;
     public static final int REQUEST_CODE_ATTACH_SOUND     = 14;
     public static final int REQUEST_CODE_RECORD_SOUND     = 15;
-    public static final int REQUEST_CODE_CREATE_SLIDESHOW = 16;
-    public static final int REQUEST_CODE_ECM_EXIT_DIALOG  = 17;
-    public static final int REQUEST_CODE_ADD_CONTACT      = 18;
+    public static final int REQUEST_CODE_ATTACH_CONTACT   = 16;
+    public static final int REQUEST_CODE_CREATE_SLIDESHOW = 17;
+    public static final int REQUEST_CODE_ECM_EXIT_DIALOG  = 18;
+    public static final int REQUEST_CODE_ADD_CONTACT      = 19;
 
     private static final String TAG = "Mms/compose";
 
@@ -2614,6 +2621,12 @@ public class ComposeMessageActivity extends Activity
                 editSlideshow();
                 break;
 
+            case AttachmentTypeSelectorAdapter.ADD_CONTACT_INFO:
+                final Intent intent = new Intent(Intent.ACTION_PICK,
+                        Contacts.CONTENT_URI);
+                startActivityForResult(intent, REQUEST_CODE_ATTACH_CONTACT);
+                break;
+
             default:
                 break;
         }
@@ -2709,6 +2722,10 @@ public class ComposeMessageActivity extends Activity
                 addAudio(data.getData());
                 break;
 
+            case REQUEST_CODE_ATTACH_CONTACT:
+                showContactInfoDialog(data.getData());
+                break;
+
             case REQUEST_CODE_ECM_EXIT_DIALOG:
                 boolean outOfEmergencyMode = data.getBooleanExtra(EXIT_ECM_RESULT, false);
                 if (outOfEmergencyMode) {
@@ -2742,6 +2759,62 @@ public class ComposeMessageActivity extends Activity
                 // TODO
                 break;
         }
+    }
+
+    private void showContactInfoDialog(Uri contactUri) {
+
+        String contactId = null,
+               displayName = null;
+        Cursor contactCursor = getContentResolver().query(contactUri,
+                new String[] {Contacts._ID, Contacts.DISPLAY_NAME}, null, null, null);
+        if(contactCursor.moveToFirst()){
+            contactId = contactCursor.getString(0);
+            displayName = contactCursor.getString(1);
+        }
+        else {
+            Toast.makeText(this, R.string.cannot_find_contact, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        final Cursor entryCursor = getContentResolver().query(Data.CONTENT_URI,
+                new String[] {
+                    Data._ID,
+                    Data.DATA1,
+                    Data.DATA2,
+                    Data.DATA3,
+                    Data.MIMETYPE
+                },
+                Data.CONTACT_ID + "=? AND ("
+                        + Data.MIMETYPE + "=? OR "
+                        + Data.MIMETYPE + "=? OR "
+                        + Data.MIMETYPE + "=? OR "
+                        + Data.MIMETYPE + "=?)",
+                new String[] {
+                    contactId,
+                    CommonDataKinds.Phone.CONTENT_ITEM_TYPE,
+                    CommonDataKinds.Email.CONTENT_ITEM_TYPE,
+                    CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE,
+                    CommonDataKinds.Website.CONTENT_ITEM_TYPE
+                },
+                Data.DATA2
+            );
+
+        ContactEntryAdapter adapter = new ContactEntryAdapter(this, entryCursor);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.ic_dialog_attach);
+        builder.setTitle(displayName);
+        builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                entryCursor.moveToPosition(which);
+                String value = entryCursor.getString(entryCursor.getColumnIndex(Data.DATA1));
+                int start = mTextEditor.getSelectionStart();
+                int end = mTextEditor.getSelectionEnd();
+                mTextEditor.getText().replace(Math.min(start, end), Math.max(start, end), value);
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 
     private final ResizeImageResultCallback mResizeImageCallback = new ResizeImageResultCallback() {
