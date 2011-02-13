@@ -65,6 +65,7 @@ public class TemplatesDb {
 
             do {
                 array[i] = c.getString(colIndex);
+                i++;
             } while (c.moveToNext());
 
             c.close();
