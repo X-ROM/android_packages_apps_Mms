@@ -108,6 +108,8 @@
     <string name="cannot_send_message" msgid="3918913277571649400">"Impossibile inviare il messaggio"</string>
     <string name="cannot_send_message_reason" msgid="8745080126044054343">"Il messaggio non ha destinatari validi."</string>
     <string name="cannot_forward_drm_obj" msgid="84606990079390099">"Impossibile inoltrare l\'oggetto DRM incluso nel messaggio."</string>
+    <!-- Error message displayed when the user attempts to attach a contact whose ID could not be resolved -->
+    <string name="cannot_find_contact">Il contatto che hai selezionato non può essere allegato.</string>
     <string name="converting_to_picture_message" msgid="2980023239017588627">"Conversione in messaggio multimediale in corso..."</string>
     <string name="converting_to_text_message" msgid="6374423235426015422">"Conversione in messaggio di testo in corso..."</string>
     <string name="cannot_add_slide_anymore" msgid="8437666385579890987">"Impossibile aggiungere altre diapositive."</string>
@@ -257,6 +259,8 @@
     <string name="attach_sound" msgid="3149325985970669609">"Audio"</string>
     <string name="attach_record_sound" msgid="6011431304469858929">"Registra audio"</string>
     <string name="attach_slideshow" msgid="3497422151091037063">"Presentazione"</string>
+    <!-- Attachment Type Selector Adapter. This string is an option in the "Attach" dialog, "Add music" dialog -->
+    <string name="attach_contact_info">Informazioni contatto</string>
     <string name="select_bottom_text" msgid="4201966447623311931">"Testo in basso"</string>
     <string name="select_top_text" msgid="6734183477539197815">"Testo in alto"</string>
     <string name="delivery_toast_body" msgid="4478305651728684364">"Messaggio ricevuto da %s"</string>
@@ -352,7 +356,7 @@
     <string name="pref_summary_mms_black_background">Attiva/disattiva sfondo nero\n(Riavvio app richiesto)</string>
 
     <!-- Custom user-agent -->
-    <string name="pref_mms_custom_option">Custom..</string>
+    <string name="pref_mms_custom_option">Personalizzato..</string>
     <string name="pref_title_mms_user_agent">Scegli User-Agent</string>
     <string name="pref_summary_mms_user_agent">Fingi che il telefono sia un modello differente (utile per gli MMS)</string>
     <string name="pref_mms_user_agent_custom_set">User-agent impostato:\n</string>
