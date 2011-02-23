@@ -168,6 +168,12 @@
     <string name="pref_summary_mms_delivery_reports" msgid="4874657984217756112">"Zustellbestätigung für jede gesendete Nachricht anfordern"</string>
     <string name="pref_summary_mms_read_reports" msgid="2748323864008907440">"Lesebestätigung für jede gesendete Nachricht anfordern"</string>
     <string name="pref_summary_sms_delivery_reports" msgid="5852207702358546129">"Zustellbestätigung für jede gesendete Nachricht anfordern"</string>
+
+    <string name="pref_title_sms_split_160">SMS-Teilung</string>
+    <string name="pref_summary_sms_split_160">SMS-Nachricht alle 160 Zeichen teilen</string>
+    <string name="pref_title_sms_split_counter">Zähler in SMS</string>
+    <string name="pref_summary_sms_split_counter">Fügt der Nachricht einen Zähler hinzu, zB. (1/2)</string>
+
     <string name="pref_summary_auto_delete" msgid="7719538116486177613">"Alte Nachrichten beim Erreichen der Grenzwerte löschen"</string>
     <string name="pref_summary_delete_limit" msgid="597128041393045216">"<xliff:g id="COUNT">%1$s</xliff:g> Nachrichten pro Konversation"</string>
     <string name="pref_title_manage_sim_messages" msgid="7820895261757881177">"Nachrichten auf SIM-Karte"</string>
