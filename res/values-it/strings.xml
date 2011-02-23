@@ -169,6 +169,16 @@
     <string name="pref_summary_mms_delivery_reports" msgid="4874657984217756112">"Richiedi una conferma di consegna per ogni messaggio inviato"</string>
     <string name="pref_summary_mms_read_reports" msgid="2748323864008907440">"Richiedi una conferma di lettura per ogni messaggio inviato"</string>
     <string name="pref_summary_sms_delivery_reports" msgid="5852207702358546129">"Richiedi una conferma di consegna per ogni messaggio inviato"</string>
+
+    <!-- Settings item for SMS Split 160 characters setting -->
+    <string name="pref_title_sms_split_160">Dividi SMS</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_160">Dividi il messaggio ogni 160 caratteri</string>
+    <!-- Settings item for boolean option for SMS Split Counter -->
+    <string name="pref_title_sms_split_counter">Contatore messaggi</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_counter">Aggiunge al messaggio un contatore, es. (1/2)</string>
+
     <string name="pref_summary_auto_delete" msgid="7719538116486177613">"Elimina vecchi messaggi al raggiungimento dei limiti"</string>
     <string name="pref_summary_delete_limit" msgid="597128041393045216">"<xliff:g id="COUNT">%1$s</xliff:g> messaggi per conversazione"</string>
     <string name="pref_title_manage_sim_messages" msgid="7820895261757881177">"Gestisci messaggi della SIM"</string>
