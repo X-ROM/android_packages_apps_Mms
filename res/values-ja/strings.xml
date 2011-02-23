@@ -345,10 +345,14 @@
     <string name="pref_summary_mms_back_to_all_threads">戻るボタンを押したときは常にすべてのスレッド一覧へ戻る</string>
     <string name="attach_contact_info">連絡先</string>
     <string name="cannot_find_contact">選択した連絡先情報は添付できませんでした。</string>
+    <string name="pref_title_sms_split_160">SMS分割</string>
+    <string name="pref_summary_sms_split_160">160文字ごとにメッセージを分割してSMSを送信する</string>
+    <string name="pref_title_sms_split_counter">分割カウンター</string>
+    <string name="pref_summary_sms_split_counter">作成画面に分割カウンターを表示する 例: (1/2)</string>
 
     <!-- Toggle setting for always show character counter -->
     <string name="pref_title_show_counter_always">常に文字数を表示</string>
-    <string name="pref_summary_show_counter_always">メッセージを作成中常に文字数のカウンタを表示する</string>
+    <string name="pref_summary_show_counter_always">メッセージを作成中常に文字数のカウンターを表示する</string>
 
     <string name="pref_mms_custom_option">カスタム..</string>
     <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
