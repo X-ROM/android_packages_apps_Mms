@@ -266,6 +266,7 @@ public class UriImage {
                             b.compress(CompressFormat.JPEG, quality, os);
                         }
                     }
+                    b.recycle();        // done with the bitmap, release the memory
                 } catch (java.lang.OutOfMemoryError e) {
                     Log.w(TAG, "getResizedImageData - image too big (OutOfMemoryError), will try "
                             + " with smaller scale factor, cur scale factor: " + scaleFactor);
@@ -285,6 +286,9 @@ public class UriImage {
 
             return os == null ? null : os.toByteArray();
         } catch (FileNotFoundException e) {
+            Log.e(TAG, e.getMessage(), e);
+            return null;
+        } catch (java.lang.OutOfMemoryError e) {
             Log.e(TAG, e.getMessage(), e);
             return null;
         } finally {
