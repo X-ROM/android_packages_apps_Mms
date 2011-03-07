@@ -426,4 +426,12 @@
     <string name="dialog_phone_goggles_unauthorized">Enviando um SMS pode não ser uma boa idéia neste momento.</string>
     <string name="dialog_phone_goggles_ok">Enviar</string>
     <string name="dialog_phone_goggles_cancel">Salvar Rascunho</string>
+    <string name="cannot_find_contact">O contato que você selecionou não pode ser adicionado.</string>
+
+    <string name="pref_title_sms_split_160">dividir SMS</string>
+    <string name="pref_summary_sms_split_160">Divide mensagens a cada 160 caracteres</string>
+    <string name="pref_title_sms_split_counter">Contador de divisão</string>
+    <string name="pref_summary_sms_split_counter">Adicionar contador a mensagem ex. (1/2)</string>
+    <string name="pref_title_save_location">Diretório a salvar anexo</string>
+    <string name="attach_contact_info">Informação do contato</string>
 </resources>
