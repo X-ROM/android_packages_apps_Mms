@@ -167,6 +167,10 @@
     <string name="pref_summary_mms_delivery_reports" msgid="4874657984217756112">"要求每次发送信息后都返回发送报告"</string>
     <string name="pref_summary_mms_read_reports" msgid="2748323864008907440">"要求每次发送信息后都返回已读回执"</string>
     <string name="pref_summary_sms_delivery_reports" msgid="5852207702358546129">"要求每次发送信息后都返回发送报告"</string>
+    <string name="pref_title_sms_split_160">短信分段</string>
+    <string name="pref_summary_sms_split_160">按每 160 个字符分割消息</string>
+    <string name="pref_title_sms_split_counter">分割编号</string>
+    <string name="pref_summary_sms_split_counter">在分割的消息中加入编号，例如：(1/2)</string>
     <string name="pref_summary_auto_delete" msgid="7719538116486177613">"达到数量上限时删除旧信息"</string>
     <string name="pref_summary_delete_limit" msgid="597128041393045216">"每个会话限存储 <xliff:g id="COUNT">%1$s</xliff:g> 条短信"</string>
     <string name="pref_title_manage_sim_messages" msgid="7820895261757881177">"管理 SIM 卡中的信息"</string>
