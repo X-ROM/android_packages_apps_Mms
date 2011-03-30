@@ -259,7 +259,7 @@
     <string name="attach_sound" msgid="3149325985970669609">"Ljud"</string>
     <string name="attach_record_sound" msgid="6011431304469858929">"Spela in ljud"</string>
     <string name="attach_slideshow" msgid="3497422151091037063">"Bildspel"</string>
-    <string name="attach_contact_info">Kontactinformation</string>
+    <string name="attach_contact_info">Kontaktinformation</string>
     <string name="select_bottom_text" msgid="4201966447623311931">"Text i nederkant"</string>
     <string name="select_top_text" msgid="6734183477539197815">"Text i överkant"</string>
     <string name="delivery_toast_body" msgid="4478305651728684364">"Meddelande mottaget av %s"</string>
