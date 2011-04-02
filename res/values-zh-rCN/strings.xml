@@ -108,6 +108,9 @@
     <string name="cannot_send_message" msgid="3918913277571649400">"无法发送此信息"</string>
     <string name="cannot_send_message_reason" msgid="8745080126044054343">"您的信息没有有效的接收者。"</string>
     <string name="cannot_forward_drm_obj" msgid="84606990079390099">"无法转发信息中包含的 DRM 对象。"</string>
+    <!-- Error message displayed when the user attempts to attach a contact whose ID could not be resolved -->
+    <string name="cannot_find_contact">无法转发选择的联系人信息。</string>
+
     <string name="converting_to_picture_message" msgid="2980023239017588627">"正在转换为彩信…"</string>
     <string name="converting_to_text_message" msgid="6374423235426015422">"正在转换为短信…"</string>
     <string name="cannot_add_slide_anymore" msgid="8437666385579890987">"无法再添加幻灯片。"</string>
@@ -258,6 +261,9 @@
     <string name="attach_sound" msgid="3149325985970669609">"音频"</string>
     <string name="attach_record_sound" msgid="6011431304469858929">"录音"</string>
     <string name="attach_slideshow" msgid="3497422151091037063">"幻灯片"</string>
+    <!-- Attachment Type Selector Adapter. This string is an option in the "Attach" dialog, "Add music" dialog -->
+    <string name="attach_contact_info">联系人信息</string>
+
     <string name="select_bottom_text" msgid="4201966447623311931">"底部文本"</string>
     <string name="select_top_text" msgid="6734183477539197815">"顶部文本"</string>
     <string name="delivery_toast_body" msgid="4478305651728684364">"%s已接收消息"</string>
@@ -351,6 +357,10 @@
     <!-- Toggle setting for enable/disable Black Background -->
     <string name="pref_title_mms_black_background">黑色背景</string>
     <string name="pref_summary_mms_black_background">启用/禁用黑色背景\n(需重启短信程序)</string>
+
+    <!-- Toggle setting for always show character counter -->
+    <string name="pref_title_show_counter_always">总是显示字符计数</string>
+    <string name="pref_summary_show_counter_always">编辑短信时总是显示字符计数</string>
 
     <!-- Custom user-agent -->
     <string name="pref_mms_custom_option">自定义..</string>
