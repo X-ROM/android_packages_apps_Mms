@@ -39,14 +39,13 @@
         android:layout_marginRight="5dip"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:paddingBottom="20dip"
-         />
+        android:paddingBottom="20dip" />
 
     <TextView android:id="@+id/from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMediumInverse"
-	android:textColor="#ffffffff"
+        android:textColor="#ffffffff"
         android:singleLine="true"
         android:layout_marginTop="6dip"
         android:layout_marginRight="5dip"
@@ -55,7 +54,7 @@
         android:layout_toRightOf="@id/avatar"
         android:layout_toLeftOf="@id/presence"
         android:layout_alignWithParentIfMissing="true"
-        android:ellipsize="marquee"  />
+        android:ellipsize="marquee" />
 
     <TextView android:id="@+id/date"
         android:layout_marginTop="2dip"
@@ -64,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmallInverse"
-	android:textColor="#ffffffff"
+        android:textColor="#ffffffff"
         android:singleLine="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true" />
@@ -91,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmallInverse"
-	android:textColor="#ffffffff"
+        android:textColor="#ffffffff"
         android:singleLine="true"
         android:layout_marginBottom="10dip"
         android:layout_marginLeft="7dip"
