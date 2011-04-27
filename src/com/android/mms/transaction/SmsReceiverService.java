@@ -493,10 +493,12 @@ public class SmsReceiverService extends Service {
         Long time = new Long(System.currentTimeMillis());
 
         if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean(MessagingPreferenceActivity.SENT_TIMESTAMP, false)) {
-            // Use the GMT offset to correct the time from the sms message
-            // to use as the message time stamp.
             time = sms.getTimestampMillis();
-            time -= TimeZone.getDefault().getOffset(time);
+            if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean(MessagingPreferenceActivity.SENT_TIMESTAMP_GMT_CORRECTION, true)) {
+                // Use the GMT offset to correct the time from the sms message
+                // to use as the message time stamp.
+                time -= TimeZone.getDefault().getOffset(time);
+            }
         }
 
         values.put(Inbox.DATE, time);

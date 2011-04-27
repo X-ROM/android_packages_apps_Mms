@@ -804,8 +804,12 @@
     <string name="pref_summary_mms_full_timestamp">Enable to show both date and time in message timestamps</string>
 
     <!-- Which timestamps -->
-    <string name="pref_title_mms_use_sent_timestamp">Use original timestamps</string>
-    <string name="pref_summary_mms_use_sent_timestamp">Display and store sent date instead of reception date</string>
+    <string name="pref_title_mms_use_sent_timestamp">Use sent timestamps</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Show operator\'s sent date instead of received date for received messages</string>
+
+    <!-- Timestamp GMT Corection -->
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">Sent timestamp GMT</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">Enable if operator\'s sent timestamp is not already GMT offset</string>
 
     <!-- Only mobile numbers -->
     <string name="pref_title_only_mobile_numbers">Only mobile numbers</string>

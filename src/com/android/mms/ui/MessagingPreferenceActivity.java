@@ -75,6 +75,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity {
     public static final String FULL_TIMESTAMP           = "pref_key_mms_full_timestamp";
     public static final String ONLY_MOBILE_NUMBERS      = "pref_key_mms_only_mobile_numbers";
     public static final String SENT_TIMESTAMP           = "pref_key_mms_use_sent_timestamp";
+    public static final String SENT_TIMESTAMP_GMT_CORRECTION = "pref_key_mms_use_sent_timestamp_gmt_correction";
     public static final String MESSAGE_FONT_SIZE     = "pref_key_mms_message_font_size";
     public static final String EMAIL_ADDR_COMPLETION        = "pref_key_mms_email_addr_completion";
     public static final String NOTIFICATION_VIBRATE_PATTERN = "pref_key_mms_notification_vibrate_pattern";
