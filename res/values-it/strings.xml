@@ -380,8 +380,12 @@
     <string name="pref_summary_mms_full_timestamp">Attiva per mostrare sia la data che l\'ora nel timestamp dei messagi</string>
 
     <!-- Which timestamps -->
-    <string name="pref_title_mms_use_sent_timestamp">Usa timestamp originali</string>
-    <string name="pref_summary_mms_use_sent_timestamp">Visualizza e archivia la data di invio invece della data di ricezione</string>
+    <string name="pref_title_mms_use_sent_timestamp">Usa timestamp di invio</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Visualizza e archivia la data e l\'ora di invio dell\'operatore invece della data di ricezione</string>
+
+    <!-- Timestamp GMT Corection -->
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">Timestamp GMT</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">Attiva se la data e l\'ora di invio dell\'operatore non ha l\'offset GMT</string>
 
     <!-- Only mobile numbers -->
     <string name="pref_title_only_mobile_numbers">Solo numeri mobili</string>
