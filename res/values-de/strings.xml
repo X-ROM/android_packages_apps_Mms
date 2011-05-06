@@ -373,8 +373,11 @@
     <string name="pref_summary_mms_full_timestamp">Datum und Zeit der Nachricht anzeigen</string>
 
     <!-- Which timestamps -->
-    <string name="pref_title_mms_use_sent_timestamp">Originale Datumsangabe</string>
-    <string name="pref_summary_mms_use_sent_timestamp">Sendedatum und Sendezeit der Nachricht anzeigen und speichern statt der Daten vom Empfangszeitpunkt</string>
+    <string name="pref_title_mms_use_sent_timestamp">Sendezeit und Datum</string>
+    <string name="pref_summary_mms_use_sent_timestamp">Zeit und Datum bei Absenden der Nachricht zeigen statt der Daten vom Empfangszeitpunkt</string>
+    <!-- Timestamp GMT Corection -->
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">GMT-Zeitangabe</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">Einschalten, wenn die gesendete Zeitangabe des Providers nicht schon den GMT-Offset enthält</string>
 
     <!-- Only mobile numbers -->
     <string name="pref_title_only_mobile_numbers">Nur mobile Rufnummern</string>
