@@ -801,8 +801,12 @@
     <string name="pref_summary_mms_full_timestamp">訊息的日期和時間都會顯示在時間戳記</string>
 
     <!-- Which timestamps -->
-    <string name="pref_title_mms_use_sent_timestamp">使用來源時間戳記</string>
-    <string name="pref_summary_mms_use_sent_timestamp">顯示及儲存傳送時間而非接收時間</string>
+    <string name="pref_title_mms_use_sent_timestamp">使用傳送時間戳記</string>
+    <string name="pref_summary_mms_use_sent_timestamp">顯示伺服器的傳送時間而非接收到信息的時間</string>
+
+    <!-- Timestamp GMT Corection -->
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">GMT 傳送時間戳記</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">如伺服器傳送時間戳記並無 GMT 時區修正，可啟用這選項</string>
 
     <!-- Only mobile numbers -->
     <string name="pref_title_only_mobile_numbers">只顯示行動號碼</string>
