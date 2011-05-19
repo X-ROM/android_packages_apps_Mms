@@ -414,6 +414,7 @@
 
     <!-- Setting item for folder to save MMS Attachments to -->
     <string name="pref_title_save_location">Attachment save folder</string>
+    <string name="pref_summary_save_location">Folder where to save message attachments</string>
 
     <!-- Label prepended to recipient's name in Undelivered Messages screen -->
     <string name="to_label">"To "</string>
@@ -847,9 +848,7 @@
     <string name="template_save">Save</string>
     <string name="template_insert_hint">Insert here the template text</string>
     <string name="template_empty_text">Text field cannot be empty</string>
-    <string name="template_explanation">Insert or modify the template text and
-        optionally
-        draw a gesture to associate it</string>
+    <string name="template_explanation">Insert or modify the template text and optionally draw a gesture to associate it</string>
     <string name="template_edit">Edit</string>
     <string name="template_delete">Delete</string>
     <string name="template_ctx_menu_title">Actions</string>
