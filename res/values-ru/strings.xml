@@ -173,7 +173,7 @@
        <!-- Settings item for SMS Split 160 characters setting -->
     <string name="pref_title_sms_split_160">Разбивать SMS</string>
         <!-- Settings item description for boolean SMS Split 160 characters setting -->
-    <string name="pref_summary_sms_split_160">Разбивать сообщения каждые 160 символов</string>
+    <string name="pref_summary_sms_split_160">Разбивать сообщения каждые 160 символов (англ.) или 70 символов (рус.)</string>
         <!-- Settings item for boolean option for SMS Split Counter -->
     <string name="pref_title_sms_split_counter">Счётчик фрагментов</string>
         <!-- Settings item description for boolean SMS Split 160 characters setting -->
@@ -365,6 +365,8 @@
     <string name="pref_summary_mms_full_timestamp">Включение отображения полной даты и времение в сообщениях</string>
     <string name="pref_title_mms_use_sent_timestamp">Использовать исходные метки времени</string>
     <string name="pref_summary_mms_use_sent_timestamp">Отображение и сохранение даты отправки, а не даты приёма.</string>
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">Метки времени GMT</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">Включите, если метка времени оператора об отправке не GMT</string>
     <string name="pref_title_only_mobile_numbers">Только мобильные номера</string>
     <string name="pref_summary_only_mobile_numbers">Включение отображения только мобильных номеров в поле получатель</string>
     <string name="pref_title_mms_email_addr_completion">Автозаполнение адреса электронной почты</string>
