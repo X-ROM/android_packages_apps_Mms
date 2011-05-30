@@ -203,7 +203,8 @@
     <string name="pref_summary_mms_auto_retrieval" msgid="925163257363757048">"Автоматически загружать MMS-сообщения"</string>
     <string name="pref_title_mms_retrieval_during_roaming" msgid="6016227402731817804">"Автозагрузка в роуминге"</string>
     <string name="pref_summary_mms_retrieval_during_roaming" msgid="2427892806582531020">"Автоматически загружать MMS-сообщения в роуминге"</string>
-    <string name="pref_title_save_location">Папка для сохранения приложений</string>   
+    <string name="pref_title_save_location">Папка для сохранения вложений</string>   
+    <string name="pref_summary_save_location">Папка для сохранения вложений сообщений</string>
     <string name="to_label" msgid="2355268818058389047">"Кому: "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Удалить"</string>
     <string name="confirm_dialog_locked_title" msgid="8179085718150932242">"Удалить заблокированное сообщение?"</string>
