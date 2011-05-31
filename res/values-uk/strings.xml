@@ -198,6 +198,7 @@
     <string name="pref_title_mms_retrieval_during_roaming">Автозавант. у роумінгу</string>
     <string name="pref_summary_mms_retrieval_during_roaming">Автоматичне завантаження MMS-повідомлень під час роумінгу</string>
     <string name="pref_title_save_location">Каталог долучень</string>
+    <string name="pref_summary_save_location">Каталог для збереження долучень</string>
     <string name="to_label" msgid="2355268818058389047">"Кому "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Видалити"</string>
     <string name="confirm_dialog_locked_title">Видалити заблоковане повідомлення?</string>
