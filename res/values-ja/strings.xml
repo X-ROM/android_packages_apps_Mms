@@ -367,12 +367,15 @@
 
     <string name="pref_title_mms_full_timestamp">送信日時を省略しない</string>
     <string name="pref_summary_mms_full_timestamp">送信日時を日付と時刻を含む完全な書式で表示する</string>
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">送信時刻はGMT</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">送信者のタイムスタンプがGMTオフセットになっていない場合に有効してください</string>
 
     <!-- Message Font size -->
     <string name="pref_title_mms_message_font_size">メッセージフォントサイズ</string>
     <string name="pref_summary_mms_message_font_size">メッセージビューのフォントサイズを変更する</string>
     <string name="pref_dialogtitle_mms_message_font_size">フォントサイズを選択</string>
     <string name="pref_title_save_location">添付ファイルの保存先</string>
+    <string name="pref_summary_save_location">添付ファイルを保存する場所を設定する</string>
 
     <!-- Change Vibrate pattern/method for message notification -->
     <string name="pref_title_mms_notification_vibrate_settings">振動</string>
