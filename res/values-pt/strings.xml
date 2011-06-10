@@ -434,4 +434,7 @@
     <string name="pref_summary_sms_split_counter">Adicionar contador a mensagem ex. (1/2)</string>
     <string name="pref_title_save_location">Diretório a salvar anexo</string>
     <string name="attach_contact_info">Informação do contato</string>
+    <string name="pref_summary_save_location">Pasta onde salva anexos de mensagens</string>
+    <string name="pref_title_mms_use_sent_timestamp_gmt_correction">Enviou timestamp GMT</string>
+    <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">Habilite se timestamp enviado pelo operador não estiver em GMT</string>
 </resources>
