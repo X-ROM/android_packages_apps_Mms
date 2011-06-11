@@ -832,7 +832,7 @@
     <string name="pref_title_mms_notification_vibrate_call">Vibrate on Call</string>
     <string name="pref_summary_mms_notification_vibrate_call">Allow vibrate while on a call</string>
     <string name="pref_title_mms_notification_vibrate_custom">Custom vibrate pattern</string>
-    <string name="pref_text_mms_notification_vibrate_custom">Format off/on in milliseconds: off, on, off, on, ...</string>
+    <string name="pref_text_mms_notification_vibrate_custom">Format off/on in milliseconds: off, on, off, on\u2026</string>
 
     <!-- Send on enter -->
     <string name="pref_title_mms_send_on_enter">Send on Enter</string>
