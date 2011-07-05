@@ -207,6 +207,7 @@
 
     <!-- Setting item for folder to save MMS Attachments to -->
     <string name="pref_title_save_location">Cartella allegati</string>
+    <string name="pref_summary_save_location">Cartella dove salvare gli allegati dei messaggi</string>
 
     <string name="to_label" msgid="2355268818058389047">"A "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Elimina"</string>
@@ -377,7 +378,7 @@
 
     <!-- Full timestamps -->
     <string name="pref_title_mms_full_timestamp">Timestamp completi</string>
-    <string name="pref_summary_mms_full_timestamp">Attiva per mostrare sia la data che l\'ora nel timestamp dei messagi</string>
+    <string name="pref_summary_mms_full_timestamp">Attiva per mostrare sia la data che l\'ora nel timestamp dei messaggi</string>
 
     <!-- Which timestamps -->
     <string name="pref_title_mms_use_sent_timestamp">Usa timestamp di invio</string>
