@@ -437,4 +437,5 @@
     <string name="pref_summary_save_location">Pasta onde salva anexos de mensagens</string>
     <string name="pref_title_mms_use_sent_timestamp_gmt_correction">Enviou timestamp GMT</string>
     <string name="pref_summary_mms_use_sent_timestamp_gmt_correction">Habilite se timestamp enviado pelo operador não estiver em GMT</string>
+    <string name="menu_mark_all_read">Marcar Todos Como Lido</string>
 </resources>
