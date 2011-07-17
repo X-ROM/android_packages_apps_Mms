@@ -410,7 +410,8 @@
     <string name="pref_summary_mms_retrieval_during_roaming" msgid="2427892806582531020">"漫遊時自動擷取簡訊"</string>
 
     <!-- Setting item for folder to save MMS Attachments to -->
-    <string name="pref_title_save_location">附件儲存到資料夾</string>
+    <string name="pref_title_save_location">附件儲存資料夾</string>
+    <string name="pref_summary_save_location">用來儲存訊息附件的資料夾</string>
 
     <!-- Label prepended to recipient's name in Undelivered Messages screen -->
     <string name="to_label" msgid="2355268818058389047">"給 "</string>
