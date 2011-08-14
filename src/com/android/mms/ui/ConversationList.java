@@ -83,6 +83,7 @@ public class ConversationList extends ListActivity
     public static final int MENU_SEARCH               = 1;
     public static final int MENU_DELETE_ALL           = 3;
     public static final int MENU_PREFERENCES          = 4;
+    public static final int MENU_MARK_ALL_READ        = 5;
 
     // IDs of the context menu items for the list of conversations.
     public static final int MENU_DELETE               = 0;
@@ -307,6 +308,11 @@ public class ConversationList extends ListActivity
         menu.add(0, MENU_PREFERENCES, 0, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
 
+        /* Add mark all read menu */
+        menu.add(0, MENU_MARK_ALL_READ, 0, R.string.menu_mark_all_read).setIcon(
+                android.R.drawable.ic_menu_view);
+
+
         return true;
     }
 
@@ -328,6 +334,9 @@ public class ConversationList extends ListActivity
             case MENU_DELETE_ALL:
                 // The invalid threadId of -1 means all threads here.
                 confirmDeleteThread(-1L, mQueryHandler);
+                break;
+            case MENU_MARK_ALL_READ:
+                Conversation.markAllConversationsAsSeen(getApplicationContext(),true);
                 break;
             case MENU_PREFERENCES: {
                 Intent intent = new Intent(this, MessagingPreferenceActivity.class);

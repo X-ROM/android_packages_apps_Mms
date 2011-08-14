@@ -33,6 +33,8 @@
 
     <!-- Menu item for starting a new conversation -->
     <string name="menu_compose_new">Compose</string>
+    <!-- Menu item for Mark all threads read -->
+    <string name="menu_mark_all_read">Mark All Read</string>
     <!-- Menu item for accessing application settings -->
     <string name="menu_preferences">Settings</string>
     <string name="menu_add_address_to_contacts">Add <xliff:g id="name">%s</xliff:g> to Contacts</string>
