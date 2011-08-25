@@ -337,6 +337,8 @@
     <string name="error_state_text" msgid="5006221625000536698">"スレッドや宛先のデータに不整合があります。バグレポートをキャプチャして android-sms-bugs@google.com に送信してください。"</string>
 
     <!-- CyanogenMod -->
+    <string name="menu_mark_all_read">全て既読にする</string>
+
     <string name="pref_title_mms_use_sent_timestamp">オリジナルの送信時刻を使用</string>
     <string name="pref_summary_mms_use_sent_timestamp">受信日時ではなく、送信日時を保存及び表示する</string>
     <string name="pref_extra_settings">拡張設定</string>
