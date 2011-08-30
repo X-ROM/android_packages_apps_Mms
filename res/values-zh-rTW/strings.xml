@@ -34,6 +34,8 @@
 
     <!-- Menu item for starting a new conversation -->
     <string name="menu_compose_new" msgid="3763437973691046238">"撰寫"</string>
+    <!-- Menu item for Mark all threads read -->
+    <string name="menu_mark_all_read">全部標示為已讀取</string>
     <!-- Menu item for accessing application settings -->
     <string name="menu_preferences" msgid="4693148116114749414">"設定"</string>
     <string name="menu_add_address_to_contacts" msgid="2313624913486309940">"新增 <xliff:g id="NAME">%s</xliff:g> 至 [聯絡人]"</string>
@@ -379,10 +381,23 @@
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
-      <item msgid="2520871831815631409">"一律"</item>
-      <item msgid="6069709696037750627">"靜音時才啟用"</item>
-      <item msgid="7486145357487111435">"永遠不要"</item>
+        <!-- Always -->
+        <item msgid="2520871831815631409">"一律"</item>
+        <!-- Only when the phone is in Silent mode -->
+        <item msgid="6069709696037750627">"靜音時才啟用"</item>
+        <!-- Never -->
+        <item msgid="7486145357487111435">"永遠不要"</item>
     </string-array>
+
+    <!-- The default vibrateWhen value, when none is set -->
+    <!-- skipping untranslatable /resources:0/string:name=prefDefault_vibrateWhen -->
+    <!-- The value to use when migrating from old versions for a true vibrate setting -->
+    <!-- skipping untranslatable /resources:0/string:name=prefDefault_vibrate_true -->
+    <!-- The value to use when migrating from old versions for a false vibrate setting -->
+    <!-- skipping untranslatable /resources:0/string:name=prefDefault_vibrate_false -->
+
+    <!-- The vibrateWhen values -->
+    <!-- skipping untranslatable /resources:0/string-array:name=prefValues_vibrateWhen -->
 
     <!-- Dialog title for the Vibrate dialog -->
     <string name="prefDialogTitle_vibrateWhen" msgid="6419655771690242118">"震動"</string>
