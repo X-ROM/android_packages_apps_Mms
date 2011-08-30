@@ -26,6 +26,7 @@
     <string name="menu_call_back" msgid="7538482331117914146">"<xliff:g id="NAME">%s</xliff:g> anrufen"</string>
     <string name="menu_send_email" msgid="671366308915241664">"E-Mail an <xliff:g id="NAME">%s</xliff:g> senden"</string>
     <string name="menu_compose_new" msgid="3763437973691046238">"Schreiben"</string>
+    <string name="menu_mark_all_read">Alle gelesen</string>
     <string name="menu_preferences" msgid="4693148116114749414">"Einstellungen"</string>
     <string name="menu_add_address_to_contacts" msgid="2313624913486309940">"<xliff:g id="NAME">%s</xliff:g> zu Kontakten hinzufügen"</string>
     <string name="menu_call" msgid="5877123227307074690">"Anrufen"</string>
@@ -202,6 +203,7 @@
 
     <!-- Setting item for folder to save MMS Attachments to -->
     <string name="pref_title_save_location">Speicherort für Anhänge</string>
+    <string name="pref_summary_save_location">Speicherort für Nachrichtenanhänge</string>
 
     <string name="to_label" msgid="2355268818058389047">"An "</string>
     <string name="confirm_dialog_title" msgid="5810813994465120375">"Löschen"</string>
