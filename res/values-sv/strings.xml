@@ -26,6 +26,7 @@
     <string name="menu_call_back" msgid="7538482331117914146">"Ring <xliff:g id="NAME">%s</xliff:g>"</string>
     <string name="menu_send_email" msgid="671366308915241664">"Skicka e-post till <xliff:g id="NAME">%s</xliff:g>"</string>
     <string name="menu_compose_new" msgid="3763437973691046238">"Skriv"</string>
+    <string name="menu_mark_all_read">Markera Alla Som Lästa</string>
     <string name="menu_preferences" msgid="4693148116114749414">"Inställningar"</string>
     <string name="menu_add_address_to_contacts" msgid="2313624913486309940">"Lägg till <xliff:g id="NAME">%s</xliff:g> i Kontakter"</string>
     <string name="menu_call" msgid="5877123227307074690">"Ring"</string>
