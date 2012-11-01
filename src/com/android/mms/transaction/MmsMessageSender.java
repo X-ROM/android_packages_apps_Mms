@@ -27,12 +27,15 @@ import android.preference.PreferenceManager;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.MmsSms;
 import android.provider.Telephony.MmsSms.PendingMessages;
+import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 
 import com.android.mms.LogTag;
 import com.android.mms.ui.ComposeMessageActivity;
 import com.android.mms.ui.MessagingPreferenceActivity;
+import com.android.mms.util.MultiSimUtility;
 import com.android.mms.util.SendingProgressTokenManager;
+import com.android.mms.ui.ComposeMessageActivity;
 import com.google.android.mms.InvalidHeaderValueException;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu.EncodedStringValue;
@@ -121,7 +124,20 @@ public class MmsMessageSender implements MessageSender {
 
         // Start MMS transaction service
         SendingProgressTokenManager.put(messageId, token);
-        mContext.startService(new Intent(mContext, TransactionService.class));
+        Intent intent = new Intent(mContext, TransactionService.class);
+        intent.putExtra(Mms.SUB_ID, ComposeMessageActivity.subSelected); //destination sub id
+        intent.putExtra(MultiSimUtility.ORIGIN_SUB_ID,
+                MultiSimUtility.getCurrentDataSubscription(mContext));
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+
+            Intent silentIntent = new Intent(mContext,
+                    com.android.mms.ui.SelectMmsSubscription.class);
+            silentIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            silentIntent.putExtras(intent); //copy all extras
+            mContext.startService(silentIntent);
+        } else {
+            mContext.startService(intent);
+        }
 
         return true;
     }

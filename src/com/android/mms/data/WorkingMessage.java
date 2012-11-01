@@ -1466,7 +1466,11 @@ public class WorkingMessage {
         }
 
         ContentValues values = new ContentValues(1);
-        values.put(Mms.SUB_ID, MSimTelephonyManager.getDefault().getPreferredDataSubscription());
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            values.put(Mms.SUB_ID, ComposeMessageActivity.subSelected);
+        } else {
+           values.put(Mms.SUB_ID, MSimTelephonyManager.getDefault().getPreferredDataSubscription());
+        }
         SqliteWrapper.update(mActivity, mContentResolver, mmsUri, values, null, null);
 
         MessageSender sender = new MmsMessageSender(mActivity, mmsUri,

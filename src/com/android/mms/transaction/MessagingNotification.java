@@ -1055,11 +1055,11 @@ public class MessagingNotification {
                 : displayAddress.replace('\n', ' ').replace('\r', ' '));
         buf.append(':').append(' ');
 
-       if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             int subscription = subId + 1;
             buf.append("SUB" + subscription);
             buf.append("-");
-       }
+        }
 
         int offset = buf.length();
         if (!TextUtils.isEmpty(subject)) {
