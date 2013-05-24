@@ -172,4 +172,6 @@
     <string name="alert_dialog_yes">Yes</string>
     <string name="alert_dialog_no">No</string>
 
+    <!-- Toast when storage is full -->
+    <string name="storage_is_full">The messaging database is full. Please delete some conversations.</string>
 </resources>
