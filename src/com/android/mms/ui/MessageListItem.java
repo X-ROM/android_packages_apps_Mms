@@ -35,6 +35,7 @@ import android.os.Message;
 import android.provider.ContactsContract.Profile;
 import android.provider.Telephony.Sms;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.MSimTelephonyManager;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -205,6 +206,7 @@ public class MessageListItem extends LinearLayout implements
                                 + mContext.getString(R.string.kilobyte);
 
         mBodyTextView.setText(formatMessage(mMessageItem, null,
+                                            mMessageItem.mSubscription,
                                             mMessageItem.mSubject,
                                             mMessageItem.mHighlight,
                                             mMessageItem.mTextContentType));
@@ -332,6 +334,7 @@ public class MessageListItem extends LinearLayout implements
         if (formattedMessage == null) {
             formattedMessage = formatMessage(mMessageItem,
                                              mMessageItem.mBody,
+                                             mMessageItem.mSubscription,
                                              mMessageItem.mSubject,
                                              mMessageItem.mHighlight,
                                              mMessageItem.mTextContentType);
@@ -528,9 +531,15 @@ public class MessageListItem extends LinearLayout implements
     ForegroundColorSpan mColorSpan = null;  // set in ctor
 
     private CharSequence formatMessage(MessageItem msgItem, String body,
-                                       String subject, Pattern highlight,
+                                       int subId, String subject, Pattern highlight,
                                        String contentType) {
         SpannableStringBuilder buf = new SpannableStringBuilder();
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            int subscription = subId + 1;
+            buf.append("SUB" + subscription);
+            buf.append("\n");
+        }
 
         boolean hasSubject = !TextUtils.isEmpty(subject);
         SmileyParser parser = SmileyParser.getInstance();
