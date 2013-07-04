@@ -84,9 +84,11 @@ import android.provider.MediaStore.Video;
 import android.provider.Settings;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
+import android.telephony.MSimSmsManager;
 import android.telephony.MSimTelephonyManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsMessage;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
@@ -101,8 +103,10 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnKeyListener;
@@ -118,6 +122,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
@@ -271,9 +276,6 @@ public class ComposeMessageActivity extends Activity
     private EditText mTextEditor;           // Text editor to type your message into
     private TextView mTextCounter;          // Shows the number of characters used in text editor
     private TextView mSendButtonMms;        // Press to send mms
-    private TextView mSendButtonMms2;        // Press to send mms
-    private TextView mSendButtonMms3;        // Press to send mms
-    static public int subSelected = 0;
     private ImageButton mSendButtonSms;     // Press to send sms
     private EditText mSubjectTextEditor;    // Text editor for MMS subject
 
@@ -327,6 +329,7 @@ public class ComposeMessageActivity extends Activity
                                             // If the value >= 0, then we jump to that line. If the
                                             // value is maxint, then we jump to the end.
     private long mLastMessageId;
+    private AlertDialog mMsimDialog;     // Used for MSIM subscription choose
 
     /**
      * Whether this activity is currently running (i.e. not paused)
@@ -689,7 +692,11 @@ public class ComposeMessageActivity extends Activity
     private class SendIgnoreInvalidRecipientListener implements OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int whichButton) {
-            sendMessage(true);
+            if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                sendMsimMessage(true);
+            } else {
+                sendMessage(true);
+            }
             dialog.dismiss();
         }
     }
@@ -704,9 +711,96 @@ public class ComposeMessageActivity extends Activity
         }
     }
 
+    private void dismissMsimDialog() {
+        if (mMsimDialog != null) {
+            mMsimDialog.dismiss();
+        }
+    }
+
+   private void processMsimSendMessage(int subscription, final boolean bCheckEcmMode) {
+        if (mMsimDialog != null) {
+            mMsimDialog.dismiss();
+        }
+        mWorkingMessage.setWorkingMessageSub(subscription);
+        sendMessage(bCheckEcmMode);
+    }
+
+    private void LaunchMsimDialog(final boolean bCheckEcmMode) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ComposeMessageActivity.this);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.multi_sim_sms_sender,
+                              (ViewGroup)findViewById(R.id.layout_root));
+        builder.setView(layout);
+        builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_BACK: {
+                            dismissMsimDialog();
+                            return true;
+                        }
+                        case KeyEvent.KEYCODE_SEARCH: {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+        );
+
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dismissMsimDialog();
+            }
+        });
+
+        ContactList recipients = isRecipientsEditorVisible() ?
+            mRecipientsEditor.constructContactsFromInput(false) : getRecipients();
+        builder.setTitle(getResources().getString(R.string.to_address_label)
+                + recipients.formatNamesAndNumbers(","));
+
+        mMsimDialog = builder.create();
+        mMsimDialog.setCanceledOnTouchOutside(true);
+
+        int[] smsBtnIds = {R.id.BtnSubOne, R.id.BtnSubTwo, R.id.BtnSubThree};
+        int[] subString={R.string.sub1, R.string.sub2, R.string.sub3};
+        int phoneCount = MSimTelephonyManager.getDefault().getPhoneCount();
+        Button[] smsBtns = new Button[phoneCount];
+
+        for (int i = 0; i < phoneCount; i++) {
+            final int subscription = i;
+            smsBtns[i] = (Button) layout.findViewById(smsBtnIds[i]);
+            smsBtns[i].setVisibility(View.VISIBLE);
+            smsBtns[i].setText(subString[i]);
+            smsBtns[i].setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Log.d(TAG, "Sub slected "+subscription);
+                        processMsimSendMessage(subscription, bCheckEcmMode);
+                }
+            });
+        }
+        mMsimDialog.show();
+    }
+
+    private void sendMsimMessage(boolean bCheckEcmMode) {
+
+        if(MSimSmsManager.getDefault().isSMSPromptEnabled()) {
+            LaunchMsimDialog(bCheckEcmMode);
+        } else {
+            int preferredSmsSub = MSimSmsManager.getDefault().getPreferredSmsSubscription();
+            mWorkingMessage.setWorkingMessageSub(preferredSmsSub);
+            sendMessage(bCheckEcmMode);
+        }
+    }
+
     private void confirmSendMessageIfNeeded() {
         if (!isRecipientsEditorVisible()) {
-            sendMessage(true);
+            if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                sendMsimMessage(true);
+            } else {
+                sendMessage(true);
+            }
             return;
         }
 
@@ -734,7 +828,11 @@ public class ComposeMessageActivity extends Activity
             // as the destination.
             ContactList contacts = mRecipientsEditor.constructContactsFromInput(false);
             mDebugRecipients = contacts.serialize();
-            sendMessage(true);
+            if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                sendMsimMessage(true);
+            } else {
+                sendMessage(true);
+            }
         }
     }
 
@@ -2531,25 +2629,9 @@ public class ComposeMessageActivity extends Activity
         if (isMms) {
             showButton = mSendButtonMms;
             hideButton = mSendButtonSms;
-
-            if (MSimTelephonyManager.getDefault().getPhoneCount() ==
-                    MSimConstants.MAX_PHONE_COUNT_TRI_SIM) {
-                mSendButtonMms2.setVisibility(View.VISIBLE);
-                mSendButtonMms3.setVisibility(View.VISIBLE);
-            } else if (MSimTelephonyManager.getDefault().getPhoneCount() ==
-                    MSimConstants.MAX_PHONE_COUNT_DUAL_SIM) {
-                mSendButtonMms2.setVisibility(View.VISIBLE);
-                mSendButtonMms3.setVisibility(View.GONE);
-            } else {
-                mSendButtonMms2.setVisibility(View.GONE);
-                mSendButtonMms3.setVisibility(View.GONE);
-            }
         } else {
             showButton = mSendButtonSms;
             hideButton = mSendButtonMms;
-            mSendButtonMms2.setVisibility(View.GONE);
-            mSendButtonMms3.setVisibility(View.GONE);
-
         }
         showButton.setVisibility(View.VISIBLE);
         hideButton.setVisibility(View.GONE);
@@ -3388,15 +3470,7 @@ public class ComposeMessageActivity extends Activity
 
     @Override
     public void onClick(View v) {
-        if ((v == mSendButtonSms || v == mSendButtonMms || v == mSendButtonMms2 ||
-                v == mSendButtonMms3) && isPreparedForSending()) {
-            if (v == mSendButtonMms) {
-                subSelected = 0;
-            } else if (v == mSendButtonMms2) {
-                subSelected = 1;
-            } else if (v == mSendButtonMms3) {
-                subSelected = 2;
-            }
+        if ((v == mSendButtonSms || v == mSendButtonMms) && isPreparedForSending()) {
             confirmSendMessageIfNeeded();
         } else if ((v == mRecipientsPicker)) {
             launchMultiplePhonePicker();
@@ -3547,15 +3621,8 @@ public class ComposeMessageActivity extends Activity
                 new LengthFilter(MmsConfig.getMaxTextLimit())});
         mTextCounter = (TextView) findViewById(R.id.text_counter);
         mSendButtonMms = (TextView) findViewById(R.id.send_button_mms);
-        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-            mSendButtonMms.setText(R.string.mms1);
-        }
-        mSendButtonMms2 = (TextView) findViewById(R.id.send_button_mms2);
-        mSendButtonMms3 = (TextView) findViewById(R.id.send_button_mms3);
         mSendButtonSms = (ImageButton) findViewById(R.id.send_button_sms);
         mSendButtonMms.setOnClickListener(this);
-        mSendButtonMms2.setOnClickListener(this);
-        mSendButtonMms3.setOnClickListener(this);
         mSendButtonSms.setOnClickListener(this);
         mTopPanel = findViewById(R.id.recipients_subject_linear);
         mTopPanel.setFocusable(false);

@@ -31,7 +31,6 @@ import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 
 import com.android.mms.LogTag;
-import com.android.mms.ui.ComposeMessageActivity;
 import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.util.MultiSimUtility;
 import com.android.mms.util.SendingProgressTokenManager;
@@ -52,6 +51,7 @@ public class MmsMessageSender implements MessageSender {
     private final Context mContext;
     private final Uri mMessageUri;
     private final long mMessageSize;
+    private int mSubscription;
 
     // Default preference values
     private static final boolean DEFAULT_DELIVERY_REPORT_MODE  = false;
@@ -60,11 +60,11 @@ public class MmsMessageSender implements MessageSender {
     private static final int     DEFAULT_PRIORITY        = PduHeaders.PRIORITY_NORMAL;
     private static final String  DEFAULT_MESSAGE_CLASS   = PduHeaders.MESSAGE_CLASS_PERSONAL_STR;
 
-    public MmsMessageSender(Context context, Uri location, long messageSize) {
+    public MmsMessageSender(Context context, Uri location, long messageSize, int subscription) {
         mContext = context;
         mMessageUri = location;
         mMessageSize = messageSize;
-
+        mSubscription = subscription;
         if (mMessageUri == null) {
             throw new IllegalArgumentException("Null message URI.");
         }
@@ -125,7 +125,7 @@ public class MmsMessageSender implements MessageSender {
         // Start MMS transaction service
         SendingProgressTokenManager.put(messageId, token);
         Intent intent = new Intent(mContext, TransactionService.class);
-        intent.putExtra(Mms.SUB_ID, ComposeMessageActivity.subSelected); //destination sub id
+        intent.putExtra(Mms.SUB_ID, mSubscription); //destination sub id
         intent.putExtra(MultiSimUtility.ORIGIN_SUB_ID,
                 MultiSimUtility.getCurrentDataSubscription(mContext));
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {

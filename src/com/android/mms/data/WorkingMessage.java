@@ -48,6 +48,7 @@ import android.util.Pair;
 
 import com.android.common.contacts.DataUsageStatUpdater;
 import com.android.common.userhappiness.UserHappinessSignals;
+import com.android.internal.telephony.MSimConstants;
 import com.android.mms.ContentRestrictionException;
 import com.android.mms.ExceedMessageSizeException;
 import com.android.mms.LogTag;
@@ -160,6 +161,7 @@ public class WorkingMessage {
     };
 
     private static final int MMS_MESSAGE_SIZE_INDEX  = 1;
+    public static int mCurrentConvSub = MSimConstants.SUB1;
 
     /**
      * Callback interface for communicating important state changes back to
@@ -368,6 +370,9 @@ public class WorkingMessage {
         return mText;
     }
 
+    public void setWorkingMessageSub(int subscription) {
+        mCurrentConvSub = subscription;
+    }
     /**
      * @return True if the message has any text. A message with just whitespace is not considered
      * to have text.
@@ -1333,7 +1338,7 @@ public class WorkingMessage {
         MessageSender sender;
 
         sender = new SmsMessageSender(mActivity, dests, msgText, threadId,
-               MSimSmsManager.getDefault().getPreferredSmsSubscription());
+                        mCurrentConvSub);
 
         try {
             sender.sendMessage(threadId);
@@ -1467,14 +1472,14 @@ public class WorkingMessage {
 
         ContentValues values = new ContentValues(1);
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-            values.put(Mms.SUB_ID, ComposeMessageActivity.subSelected);
+            values.put(Mms.SUB_ID, mCurrentConvSub);
         } else {
            values.put(Mms.SUB_ID, MSimTelephonyManager.getDefault().getPreferredDataSubscription());
         }
         SqliteWrapper.update(mActivity, mContentResolver, mmsUri, values, null, null);
 
         MessageSender sender = new MmsMessageSender(mActivity, mmsUri,
-                slideshow.getCurrentMessageSize());
+                slideshow.getCurrentMessageSize(), mCurrentConvSub);
         try {
             if (!sender.sendMessage(threadId)) {
                 // The message was sent through SMS protocol, we should

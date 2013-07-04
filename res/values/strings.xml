@@ -169,7 +169,12 @@
     <string name="mms1">MMS1</string>
     <string name="mms2">MMS2</string>
     <string name="mms3">MMS3</string>
-
+    <!-- Set Subscription screen: label sub 1 -->
+    <string name="sub1">SUB 1</string>
+    <!-- Set Subscription screen: label sub 2 -->
+    <string name="sub2">SUB 2</string>
+    <!-- Set Subscription screen: label sub 3 -->
+    <string name="sub3">SUB 3</string>
     <!-- Menu item in conversation screen for returning to the conversation list -->
     <string name="all_threads">All threads</string>
 
