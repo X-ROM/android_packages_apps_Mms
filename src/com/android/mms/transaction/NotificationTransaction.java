@@ -93,8 +93,9 @@ public class NotificationTransaction extends Transaction implements Runnable {
             throw new IllegalArgumentException();
         }
 
-        mId = new String(mNotificationInd.getTransactionId());
         mContentLocation = new String(mNotificationInd.getContentLocation());
+        mId = mContentLocation;
+        Log.d(TAG, "mId=" + mId);
 
         // Attach the transaction to the instance of RetryScheduler.
         attach(RetryScheduler.getInstance(context));
@@ -120,7 +121,8 @@ public class NotificationTransaction extends Transaction implements Runnable {
         }
 
         mNotificationInd = ind;
-        mId = new String(ind.getTransactionId());
+        mId = new String(mNotificationInd.getContentLocation());
+        Log.d(TAG, "mId=" + mId);
     }
 
     /*
