@@ -83,9 +83,9 @@
     <string name="pref_title_notification_privacy_mode_enabled">Безопасный режим</string>
     <string name="pref_summary_notification_privacy_mode_enabled">Скрывать отправителя и сообщение в строке состояния, а также отключить \"Быстрый ответ\"</string>
     <string name="notification_single_title_privacy_mode">Новое сообщение</string>
-    <string name="notification_single_text_privacy_mode">1 непрочитанное сообщение</string>
+    <string name="notification_single_text_privacy_mode">Сообщений: <xliff:g id="number" example="3">%1$s</xliff:g></string>
     <string name="notification_multiple_title_privacy_mode">Новые сообщения</string>
-    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> сообщения (ий)</string>
+    <string name="notification_multiple_text_privacy_mode">Сообщений: <xliff:g id="number" example="3">%1$s</xliff:g></string>
     <string name="notification_ticker_privacy_mode">Получено новое сообщение</string>
     <string name="menu_insert_contact_info">Вставить контакт</string>
     <string name="cannot_find_contact">Не удаётся вставить информацию из выбранного контакта</string>
