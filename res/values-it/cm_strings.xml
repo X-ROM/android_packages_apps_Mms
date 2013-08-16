@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!-- 
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,6 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
     <string name="menu_add_to_calendar">Aggiungi al calendario</string>
     <string name="button_close">Chiudi</string>
     <string name="button_view">Visualizza</string>
@@ -92,5 +94,18 @@
     <string name="cannot_find_contact">Non è possibile inserire le informazioni del contatto selezionato</string>
     <string name="insert_contact_info_positive_button">Inserisci</string>
     <string name="label_mms_push">Invio MMS</string>
-    <string name="desc_mms_push">Forza invio MMS da cartella outbox</string>
+    <string name="desc_mms_push">Forza invio MMS da cartella In uscita</string>
+    <string name="blacklist_title">Blacklist</string>
+    <string name="blacklist_summary_disabled">Disattivata</string>
+    <string name="blacklist_summary">I messaggi provenienti dai numeri presenti nella blacklist saranno bloccati</string>
+    <string name="blacklist_notification">Bloccato un messaggio da %s</string>
+    <string name="blacklist_notification_private_number">Bloccato un messaggio da un numero privato</string>
+    <string name="blacklist_notification_list_private">Privato</string>
+    <string name="blacklist_notification_unknown_number">Bloccato un messaggio da un numero sconosciuto: %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> messaggi sono stati bloccati</string>
+    <string name="unblock_number">Sblocca</string>
+    <string name="add_to_blacklist">Aggiungi alla blacklist</string>
+    <string name="add_to_blacklist_message">I futuri messaggi da %s saranno bloccati</string>
+    <string name="alert_dialog_yes">Si</string>
+    <string name="alert_dialog_no">No</string>
 </resources>
