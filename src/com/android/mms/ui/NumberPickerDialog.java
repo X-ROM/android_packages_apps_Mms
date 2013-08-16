@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
@@ -59,7 +60,10 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
             int rangeMin,
             int rangeMax,
             int title) {
-        this(context, AlertDialog.THEME_HOLO_LIGHT, callBack, number, rangeMin, rangeMax, title);
+
+        this(context, context.getResources().getConfiguration().uiInvertedMode
+                == Configuration.UI_INVERTED_MODE_YES ? AlertDialog.THEME_HOLO_DARK
+                : AlertDialog.THEME_HOLO_LIGHT, callBack, number, rangeMin, rangeMax, title); 
     }
 
     /**
