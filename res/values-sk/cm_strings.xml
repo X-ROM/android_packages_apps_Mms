@@ -64,7 +64,7 @@
     <string name="gestures_already_present">Podobné gesto je už priradené k inej šablóne</string>
     <string name="select_template">Vyberte šablóny</string>
     <string name="pref_title_templates_show_gesture">Gesto</string>
-    <string name="pref_summary_templates_show_gesture">Zobraziť stopyu gesta</string>
+    <string name="pref_summary_templates_show_gesture">Zobraziť stopy gesta</string>
     <string name="pref_title_template_gestures_sensitivity">Citlivosť giest</string>
     <string name="pref_extra_settings">Extra nastavenia</string>
     <string name="menu_insert_contact_info">Vložiť informácie o kontakte</string>
