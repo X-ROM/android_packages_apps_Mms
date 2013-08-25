@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -52,7 +53,7 @@
     <string name="template_save">Guardar</string>
     <string name="template_ctx_menu_title">Acciones</string>
     <string name="template_edit">Editar</string>
-    <string name="template_delete">Borrar</string>
+    <string name="template_delete">Eliminar</string>
     <string name="template_list_title">Plantillas</string>
     <string name="template_new_title">Nueva plantilla</string>
     <string name="template_insert">Insertar plantilla</string>
@@ -60,7 +61,7 @@
     <string name="template_not_present_error">No ha definido ninguna plantilla</string>
     <string name="template_not_present_error_title">Error</string>
     <string name="template_select">Seleccionar una plantilla</string>
-    <string name="template_confirm_dialog_title">¿Borrar?</string>
+    <string name="template_confirm_dialog_title">¿Eliminar?</string>
     <string name="gestures_already_present">Un gesto similar está actualmente asociado a otra plantilla</string>
     <string name="select_template">Seleccionar plantillas</string>
     <string name="pref_title_templates_show_gesture">Gestos</string>
@@ -106,4 +107,6 @@
     <string name="add_to_blacklist_message">Los mensajes de %s serán bloqueados</string>
     <string name="alert_dialog_yes">Sí</string>
     <string name="alert_dialog_no">No</string>
+    <string name="storage_is_full">La base de datos de mensajes está llena. Por favor, elimina algunas conversaciones.</string>
+    <string name="menu_resend">Reenviar</string>
 </resources>
