@@ -106,4 +106,6 @@
     <string name="add_to_blacklist_message">Μελλοντικά μηνύματα από το %s θα απορρίπτονται</string>
     <string name="alert_dialog_yes">Ναι</string>
     <string name="alert_dialog_no">Όχι</string>
+    <string name="storage_is_full">Η βάση δεδομένων μηνυμάτων είναι πλήρης. Παρακαλώ διαγράψτε ορισμένες συζητήσεις.</string>
+    <string name="menu_resend">Επανάληψη αποστολής</string>
 </resources>
