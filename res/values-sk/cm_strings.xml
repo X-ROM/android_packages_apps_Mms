@@ -106,4 +106,6 @@
     <string name="unblock_number">Odblokovať</string>
     <string name="add_to_blacklist">Pridať na čiernu listinu</string>
     <string name="add_to_blacklist_message">Ďalšie správy od %s budú blokované</string>
+    <string name="storage_is_full">Databáza správ je plná. Prosím, odstráňte niektoré konverzácie.</string>
+    <string name="menu_resend">Odoslať znovu</string>
 </resources>
