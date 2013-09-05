@@ -108,4 +108,12 @@
     <string name="add_to_blacklist_message">Ďalšie správy od %s budú blokované</string>
     <string name="storage_is_full">Databáza správ je plná. Prosím, odstráňte niektoré konverzácie.</string>
     <string name="menu_resend">Odoslať znovu</string>
+    <string name="select_recipients">Vyberte príjemcov</string>
+    <string name="groups_header">Skupiny</string>
+    <string name="no_recipients">Nenašli sa žiadne kontakty</string>
+    <string name="no_recipients_mobile_only">Nenašli sa žiadne kontakty. Skúste použiť filter bez voľby \'Iba mobilné čísla\'</string>
+    <string name="menu_done">Hotovo</string>
+    <string name="menu_mobile">Iba mobilné čísla</string>
+    <string name="menu_groups">Zobraziť skupiny</string>
+    <string name="fastscroll_index_groups">SK</string>
 </resources>
