@@ -106,4 +106,12 @@
     <string name="alert_dialog_no">Nie</string>
     <string name="storage_is_full">Pamięć wiadomości jest pełna. Proszę usunąć część konwersacji</string>
     <string name="menu_resend">Wyślij ponownie</string>
+    <string name="select_recipients">Wybierz adresatów</string>
+    <string name="groups_header">Grupy</string>
+    <string name="no_recipients">Nie znaleziono kontaktów.</string>
+    <string name="no_recipients_mobile_only">Nie znaleziono pasujących kontaktów. Wyłącz filtr \'Tylko numery komórkowe\' i spróbuj ponownie.</string>
+    <string name="menu_done">Gotowe</string>
+    <string name="menu_mobile">Tylko numery komórkowe</string>
+    <string name="menu_groups">Pokaż grupy</string>
+    <string name="fastscroll_index_groups">GR</string>
 </resources>
