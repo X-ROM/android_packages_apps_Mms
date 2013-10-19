@@ -116,4 +116,12 @@
     <string name="menu_mobile">Alleen mobiele nummers</string>
     <string name="menu_groups">Groepen tonen</string>
     <string name="fastscroll_index_groups">GRP</string>
+    <string name="pref_title_send_delay">Verzendingsvertraging</string>
+    <string name="send_delay_immediate">Onmiddellijk verzenden</string>
+    <string name="send_delay_3seconds">3 seconden</string>
+    <string name="send_delay_5seconds">5 seconden</string>
+    <string name="send_delay_10seconds">10 seconden</string>
+    <string name="send_delay_20seconds">20 seconden</string>
+    <string name="send_delay_30seconds">30 seconden</string>
+    <string name="sent_countdown">Aftellen tot verzenden</string>
 </resources>
