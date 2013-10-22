@@ -106,4 +106,22 @@
     <string name="add_to_blacklist_message">Fremtidige beskeder fra %s vil blive blokeret</string>
     <string name="alert_dialog_yes">Ja</string>
     <string name="alert_dialog_no">Nej</string>
+    <string name="storage_is_full">Besked-databasen er fuld. Slet venligst nogle samtaler.</string>
+    <string name="menu_resend">Send igen</string>
+    <string name="select_recipients">Vælg modtagere</string>
+    <string name="groups_header">Grupper</string>
+    <string name="no_recipients">Ingen kontakter fundet</string>
+    <string name="no_recipients_mobile_only">Ingen kontakter fundet. Prøv uden filteret \'Kun mobilnumre\'</string>
+    <string name="menu_done">Udført</string>
+    <string name="menu_mobile">Kun mobilnumre</string>
+    <string name="menu_groups">Vis grupper</string>
+    <string name="fastscroll_index_groups">GR</string>
+    <string name="pref_title_send_delay">Leveringsforsinkelse</string>
+    <string name="send_delay_immediate">Send straks</string>
+    <string name="send_delay_3seconds">3 sekunder</string>
+    <string name="send_delay_5seconds">5 sekunder</string>
+    <string name="send_delay_10seconds">10 sekunder</string>
+    <string name="send_delay_20seconds">20 sekunder</string>
+    <string name="send_delay_30seconds">30 sekunder</string>
+    <string name="sent_countdown">Nedtælling for beskedlevering</string>
 </resources>
