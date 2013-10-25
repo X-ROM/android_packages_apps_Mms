@@ -795,11 +795,11 @@
     <string name="pending_mms_text">Touch to switch the subscription.</string>
 
     <string name="abort_mms">Messaging: Abort MMS</string>
-    <string name="abort_mms_text ">Touch to abort and switch back.</string>
+    <string name="abort_mms_text">Touch to abort and switch back.</string>
 
     <string name="progress_mms_title">MMS transaction on other sub in progress</string>
     <string name="progress_mms">Messaging: MMS in progress...</string>
-    <string name="progress_mms_text ">Touch to retry again</string>
+    <string name="progress_mms_text">Touch to retry again</string>
 
 </resources>
 
