@@ -124,6 +124,9 @@
     <string name="send_delay_20seconds">20 секунд</string>
     <string name="send_delay_30seconds">30 секунд</string>
     <string name="sent_countdown">Обратный отсчёт</string>
+    <string name="mms1">MMS1</string>
+    <string name="mms2">MMS2</string>
+    <string name="mms3">MMS3</string>
     <string name="sub1">ПОДП. 1</string>
     <string name="sub2">ПОДП. 2</string>
     <string name="sub3">ПОДП. 3</string>
