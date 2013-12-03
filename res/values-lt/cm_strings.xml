@@ -16,7 +16,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="prefs_templates_settings">SMS šablonai</string>
     <string name="pref_title_templates_manage">Šablonai</string>
-    <string name="pref_summary_templates_manage">Valdykite savo SMS šablonus</string>
+    <string name="pref_summary_templates_manage">Valdykite SMS šablonus</string>
     <string name="pref_title_templates_show_gesture">Gestas</string>
     <string name="pref_summary_templates_show_gesture">Rodyti gesto pėdsaką</string>
     <string name="pref_title_template_gestures_sensitivity">Gesto jautrumas</string>
@@ -50,7 +50,7 @@
     <string name="pref_text_mms_notification_vibrate_custom">Formatas įjungti/išjungti milisekundėmis: išjungta, įjungta, išjungta, įjungta ...</string>
     <string name="pref_extra_settings">Papildomi nustatymai</string>
     <string name="pref_title_enable_emojis">Emocijų palaikymas</string>
-    <string name="pref_summary_enable_emojis">Įjungti emocijos palaikymą, iš 471 šypsenėles rinkinio</string>
+    <string name="pref_summary_enable_emojis">Įjungti emocijų palaikymą, iš 471 šypsenėles rinkinio</string>
     <string name="menu_insert_emoji">Įterpti šypsenėles</string>
     <string name="pref_title_mms_full_timestamp">Visos laiko žymos</string>
     <string name="pref_summary_mms_full_timestamp">Laiko žymose rodyti datą ir laiką</string>
@@ -60,6 +60,8 @@
     <string name="pref_keyboard_emoji">Rodyti šypsenėlių mygtuką</string>
     <string name="pref_keyboard_new_line">Rodyti naujos eilutės mygtuką</string>
     <string name="pref_keyboard_unknown">Nežinomas, prašome pasirinkti iš naujo</string>
+    <string name="pref_title_sms_split_counter">SMS skaitliukas</string>
+    <string name="pref_summary_sms_split_counter">Prideda skaitliuką pranešimuose pvz. (1/2)</string>
     <string name="pref_quickmessage">Greitas atsakymas</string>
     <string name="pref_quickmessage_title">Rodyti laikinąjį langą</string>
     <string name="pref_quickmessage_summary">Rodyti greitų žinučių laikinąjį langą gaunamiems SMS pranešimams</string>
@@ -84,7 +86,7 @@
     <string name="pref_title_unicode_stripping">Pašalinti \'Unicode\'</string>
     <string name="pref_unicode_stripping_leave_intact">Palikti nepaliestus simbolius</string>
     <string name="pref_unicode_stripping_non_encodable">Pašalinti \'non-encodable\' simbolius</string>
-    <string name="pref_unicode_stripping_all">Pašalinti visus \'unicode simbolius\'</string>
+    <string name="pref_unicode_stripping_all">Pašalinti visus \'unicode\' simbolius</string>
     <string name="pref_title_enable_softbank_encoding">\'SoftBank\' emocijos</string>
     <string name="pref_summary_enable_softbank_encoding">Naudoti \'SoftBank\' emocijas koduojant</string>
     <string name="pref_title_enable_quick_emojis">Greitas emocijų mygtukas</string>
@@ -92,7 +94,7 @@
     <string name="label_mms_push">MMS siuntimas</string>
     <string name="desc_mms_push">Siunčia MMS iš siunčiamųjų į tinklą</string>
     <string name="blacklist_title">Juodasis sąrašas</string>
-    <string name="blacklist_summary_disabled">Išjungta</string>
+    <string name="blacklist_summary_disabled">Išjungtas</string>
     <string name="blacklist_summary">Gaunami pranešimai iš telefonų numerių kurie yra juodajame sąraše bus blokuojami</string>
     <string name="blacklist_notification">Užblokuotas pranešimas iš %s</string>
     <string name="blacklist_notification_private_number">Užblokuotas pranešimas iš privataus numerio</string>
@@ -122,4 +124,22 @@
     <string name="send_delay_20seconds">20 sekundžių</string>
     <string name="send_delay_30seconds">30 sekundžių</string>
     <string name="sent_countdown">Pranešimo siuntimo laikmatis</string>
+    <string name="mms1">MMS1</string>
+    <string name="mms2">MMS2</string>
+    <string name="mms3">MMS3</string>
+    <string name="sub1">PREN. 1</string>
+    <string name="sub2">PREN. 2</string>
+    <string name="sub3">PREN. 3</string>
+    <string name="select_subscription_title">Pasirinkite Prenumeratą</string>
+    <string name="subscription1_title">Prenumerata 1</string>
+    <string name="subscription2_title">Prenumerata 2</string>
+    <string name="subscription3_title">Prenumerata 3</string>
+    <string name="pending_mms_title">Laukiantis MMS pranešimas kitoje prenumeratoje.</string>
+    <string name="pending_mms">Pranešimai: Laukia vienas ar daugiau MMS pranešimų.</string>
+    <string name="pending_mms_text">Palieskite, kad perjungtumėte prenumeratą.</string>
+    <string name="abort_mms">Pranešimai: Nutraukti MMS pranešimą</string>
+    <string name="abort_mms_text">Palieskite, kad nutrauktumėte ir vėl įjungtumėte.</string>
+    <string name="progress_mms_title">Kitoje prenumeratoje vyksta MMS pranešimo tvarkymas</string>
+    <string name="progress_mms">Pranešimai: Tvarkomas MMS pranešimas...</string>
+    <string name="progress_mms_text">Palieskite norėdami bandyti dar kartą</string>
 </resources>
