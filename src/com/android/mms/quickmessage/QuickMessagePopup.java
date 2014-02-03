@@ -174,6 +174,9 @@ public class QuickMessagePopup extends Activity implements
         mInputMethod = Integer.parseInt(prefs.getString(MessagingPreferenceActivity.INPUT_TYPE,
                 Integer.toString(InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE)));
 
+        mDarkTheme = mContext.getResources().getConfiguration().uiThemeMode
+                == Configuration.UI_THEME_MODE_HOLO_DARK;
+
         // Set the window features and layout
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_quickmessage);
