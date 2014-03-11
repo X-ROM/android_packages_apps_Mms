@@ -54,6 +54,7 @@ import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.provider.Telephony.Mms;
 import android.provider.Telephony.Sms;
 import android.telephony.MSimSmsManager;
@@ -974,7 +975,12 @@ public class MessagingNotification {
                     PendingIntent.FLAG_UPDATE_CURRENT);
         }
         // Always have to set the small icon or the notification is ignored
-        noti.setSmallIcon(R.drawable.stat_notify_sms);
+        if (Settings.System.getInt(context.getContentResolver(),
+                Settings.System.KEY_SMS_BREATH, 0) == 1) {
+               noti.setSmallIcon(R.drawable.stat_notify_sms_breath);
+           } else {    
+               noti.setSmallIcon(R.drawable.stat_notify_sms);
+        }
 
         NotificationManager nm = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
