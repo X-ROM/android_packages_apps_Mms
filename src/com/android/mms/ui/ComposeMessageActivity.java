@@ -397,6 +397,8 @@ public class ComposeMessageActivity extends Activity
                                             // value is maxint, then we jump to the end.
     private long mLastMessageId;
 
+    private AlertDialog mMsimDialog;     // Used for MSIM subscription choose
+
     // Add SMS to calendar reminder
     private static final String CALENDAR_EVENT_TYPE = "vnd.android.cursor.item/event";
 
