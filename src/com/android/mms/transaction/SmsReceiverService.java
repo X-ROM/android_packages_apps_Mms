@@ -538,8 +538,6 @@ public class SmsReceiverService extends Service {
             return replaceMessage(context, msgs, error);
         } else if (MmsConfig.isSuppressedSprintVVM(sms.getOriginatingAddress())) {
             return null;
-        } else if (isBlacklisted(context, sms.getOriginatingAddress(), sms.getTimestampMillis())) {
-            return null;
         } else {
             return storeMessage(context, msgs, error);
         }
